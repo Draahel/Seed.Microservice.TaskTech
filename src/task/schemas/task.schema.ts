@@ -20,7 +20,7 @@ export class Task {
     @Prop()
     state:String;
 
-    @Prop()
+    @Prop({type:Date, default:Date.now})
     date:Date;
 }
 

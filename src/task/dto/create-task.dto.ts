@@ -1,8 +1,8 @@
 export class CreateTaskDto{
-    name:String;
-    equipment:String;
-    assignedTo:String;
-    description:String;
-    state:String;
+    readonly name:String;
+    readonly equipment:String;
+    readonly assignedTo:String;
+    readonly description:String;
+    readonly state:String;
     date:Date;
 }
