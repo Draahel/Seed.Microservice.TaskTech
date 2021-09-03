@@ -1,7 +1,7 @@
 export declare class TaskService {
-    getTask(): string;
+    getTask(id: any): string;
     getTasks(): string;
-    createTask(): string;
+    createTask(task: any): string;
     updateTask(): string;
     deleteTask(): string;
     selectEquipment(): string;

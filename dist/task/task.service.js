@@ -9,13 +9,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskService = void 0;
 const common_1 = require("@nestjs/common");
 let TaskService = class TaskService {
-    getTask() {
+    getTask(id) {
         return 'Obtener una tarea';
     }
     getTasks() {
         return 'Obtener todas las tareas';
     }
-    createTask() {
+    createTask(task) {
         return 'Tarea Creada';
     }
     updateTask() {

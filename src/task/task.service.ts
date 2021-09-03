@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class TaskService {
     
     // Obtener una tarea por id
-    getTask(){
+    getTask(id){
         return 'Obtener una tarea';
     }
 
@@ -14,7 +14,7 @@ export class TaskService {
     }
 
     // Crear una tarea
-    createTask(){
+    createTask(task){
         return 'Tarea Creada';
     }
 
