@@ -1,12 +1,12 @@
 import { Model } from 'mongoose';
 import { CreateTaskDto } from './dto/create-task.dto';
-import { TaskDocument } from './schemas/task.schema';
+import { Task, TaskDocument } from './schemas/task.schema';
 export declare class TaskService {
     private taskModel;
     constructor(taskModel: Model<TaskDocument>);
-    getTask(id: any): import("mongoose").Query<TaskDocument, TaskDocument, {}, TaskDocument>;
-    getTasks(): import("mongoose").Query<TaskDocument[], TaskDocument, {}, TaskDocument>;
-    createTask(task: CreateTaskDto): Promise<TaskDocument>;
+    getTask(taskId: any): Promise<Task>;
+    getTasks(): Promise<Task[]>;
+    createTask(task: CreateTaskDto): Promise<Task>;
     updateTask(): string;
-    deleteTask(): string;
+    deleteTask(taskId: any): import("mongoose").Query<TaskDocument, TaskDocument, {}, TaskDocument>;
 }

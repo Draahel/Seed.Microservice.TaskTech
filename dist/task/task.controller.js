@@ -19,8 +19,8 @@ let TaskController = class TaskController {
     constructor(taskService) {
         this.taskService = taskService;
     }
-    getTask(id) {
-        return this.taskService.getTask(id);
+    getTask(taskId) {
+        return this.taskService.getTask(taskId);
     }
     getTasks() {
         return this.taskService.getTasks();
@@ -31,13 +31,13 @@ let TaskController = class TaskController {
     updateTask() {
         return this.taskService.updateTask();
     }
-    deteleTask() {
-        return this.taskService.deleteTask();
+    deteleTask(taskId) {
+        return this.taskService.deleteTask(taskId);
     }
 };
 __decorate([
-    (0, common_1.Get)('get-task-by-id/:id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)('get-task-by-id/:taskId'),
+    __param(0, (0, common_1.Param)('taskId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
@@ -62,9 +62,10 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], TaskController.prototype, "updateTask", null);
 __decorate([
-    (0, common_1.Delete)('delete-task'),
+    (0, common_1.Delete)('delete-task/:taskId'),
+    __param(0, (0, common_1.Param)('taskId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], TaskController.prototype, "deteleTask", null);
 TaskController = __decorate([

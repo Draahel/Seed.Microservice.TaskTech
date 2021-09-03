@@ -5,9 +5,9 @@ import { TaskService } from './task.service';
 export class TaskController {
     constructor(private taskService:TaskService){}
     
-    @Get('get-task-by-id/:id')
-    getTask(@Param('id') id:String){
-        return this.taskService.getTask(id);
+    @Get('get-task-by-id/:taskId')
+    getTask(@Param('taskId') taskId:String){
+        return this.taskService.getTask(taskId);
     }
 
     @Get('get-all-tasks')
@@ -25,9 +25,9 @@ export class TaskController {
         return this.taskService.updateTask();
     }
 
-    @Delete('delete-task')
-    deteleTask(){
-        return this.taskService.deleteTask();
+    @Delete('delete-task/:taskId')
+    deteleTask(@Param('taskId') taskId){
+        return this.taskService.deleteTask(taskId);
     }
 
     

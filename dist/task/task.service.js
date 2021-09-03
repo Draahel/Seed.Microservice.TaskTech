@@ -20,21 +20,21 @@ let TaskService = class TaskService {
     constructor(taskModel) {
         this.taskModel = taskModel;
     }
-    getTask(id) {
-        return this.taskModel.findById(id);
+    async getTask(taskId) {
+        return await this.taskModel.findById(taskId);
     }
-    getTasks() {
-        return this.taskModel.find();
+    async getTasks() {
+        return await this.taskModel.find();
     }
-    createTask(task) {
+    async createTask(task) {
         const newTask = new this.taskModel(task);
-        return newTask.save();
+        return await newTask.save();
     }
     updateTask() {
         return 'Tarea actualizada';
     }
-    deleteTask() {
-        return 'Tarea eliminada';
+    deleteTask(taskId) {
+        return this.taskModel.findByIdAndDelete(taskId);
     }
 };
 TaskService = __decorate([
