@@ -24,7 +24,7 @@ let TaskService = class TaskService {
         return this.taskModel.findById(id);
     }
     getTasks() {
-        return 'Obtener todas las tareas';
+        return this.taskModel.find();
     }
     createTask(task) {
         const newTask = new this.taskModel(task);

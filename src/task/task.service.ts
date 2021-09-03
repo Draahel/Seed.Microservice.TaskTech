@@ -14,7 +14,7 @@ export class TaskService {
 
     // Listar todas las tareas
     getTasks(){
-        return 'Obtener todas las tareas';
+        return this.taskModel.find();
     }
 
     // Crear una tarea
