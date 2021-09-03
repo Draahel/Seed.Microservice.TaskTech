@@ -19,7 +19,8 @@ export class TaskService {
 
     // Crear una tarea
     createTask(task:CreateTaskDto){
-        return `Tarea Creada ${task}`;
+        const newTask = new this.taskModel(task);
+        return newTask.save();
     }
 
     // Actualizar una tarea

@@ -27,7 +27,8 @@ let TaskService = class TaskService {
         return 'Obtener todas las tareas';
     }
     createTask(task) {
-        return `Tarea Creada ${task}`;
+        const newTask = new this.taskModel(task);
+        return newTask.save();
     }
     updateTask() {
         return 'Tarea actualizada';

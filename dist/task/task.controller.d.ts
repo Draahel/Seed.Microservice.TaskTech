@@ -4,7 +4,7 @@ export declare class TaskController {
     constructor(taskService: TaskService);
     getTask(id: String): string;
     getTasks(): string;
-    createTask(task: any): string;
+    createTask(task: any): Promise<import("./schemas/task.schema").TaskDocument>;
     updateTask(): string;
     deteleTask(): string;
 }

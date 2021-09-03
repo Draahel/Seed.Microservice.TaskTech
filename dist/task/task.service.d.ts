@@ -6,7 +6,7 @@ export declare class TaskService {
     constructor(taskModel: Model<TaskDocument>);
     getTask(id: any): string;
     getTasks(): string;
-    createTask(task: CreateTaskDto): string;
+    createTask(task: CreateTaskDto): Promise<TaskDocument>;
     updateTask(): string;
     deleteTask(): string;
 }
