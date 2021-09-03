@@ -24,12 +24,6 @@ let TaskService = class TaskService {
     deleteTask() {
         return 'Tarea eliminada';
     }
-    selectEquipment() {
-        return 'Cliente seleccionado';
-    }
-    selectUser() {
-        return 'Usuario seleccionado';
-    }
 };
 TaskService = __decorate([
     (0, common_1.Injectable)()

@@ -5,6 +5,4 @@ export declare class TaskService {
     createTask(task: CreateTaskDto): string;
     updateTask(): string;
     deleteTask(): string;
-    selectEquipment(): string;
-    selectUser(): string;
 }

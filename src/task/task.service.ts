@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CreateTaskDto } from './dto/create-task.dto';
 
 @Injectable()
 export class TaskService {
@@ -14,8 +15,8 @@ export class TaskService {
     }
 
     // Crear una tarea
-    createTask(task){
-        return 'Tarea Creada';
+    createTask(task:CreateTaskDto){
+        return `Tarea Creada ${task}`;
     }
 
     // Actualizar una tarea
@@ -26,15 +27,5 @@ export class TaskService {
     // Eliminar una tarea
     deleteTask(){
         return 'Tarea eliminada';
-    }
-
-    // Seleccionar el equipo al cual se le asignará la tarea
-    selectEquipment(){
-        return 'Cliente seleccionado';
-    }
-
-    // Seleccionar el usuario que se encargará de la tarea
-    selectUser(){
-        return 'Usuario seleccionado';
     }
 }
