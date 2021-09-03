@@ -16,7 +16,7 @@ let TaskService = class TaskService {
         return 'Obtener todas las tareas';
     }
     createTask(task) {
-        return 'Tarea Creada';
+        return `Tarea Creada ${task}`;
     }
     updateTask() {
         return 'Tarea actualizada';
