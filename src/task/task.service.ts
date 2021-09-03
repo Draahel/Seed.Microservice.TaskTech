@@ -9,7 +9,7 @@ export class TaskService {
     constructor(@InjectModel('Task') private taskModel:Model<TaskDocument>){}
     // Obtener una tarea por id
     getTask(id){
-        return 'Obtener una tarea';
+        return this.taskModel.findById(id);
     }
 
     // Listar todas las tareas

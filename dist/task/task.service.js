@@ -21,7 +21,7 @@ let TaskService = class TaskService {
         this.taskModel = taskModel;
     }
     getTask(id) {
-        return 'Obtener una tarea';
+        return this.taskModel.findById(id);
     }
     getTasks() {
         return 'Obtener todas las tareas';
