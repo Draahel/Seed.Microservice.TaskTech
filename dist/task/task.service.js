@@ -9,6 +9,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskService = void 0;
 const common_1 = require("@nestjs/common");
 let TaskService = class TaskService {
+    getTask() {
+        return 'Obtener una tarea';
+    }
+    getTasks() {
+        return 'Obtener todas las tareas';
+    }
+    createTask() {
+        return 'Tarea Creada';
+    }
+    updateTask() {
+        return 'Tarea actualizada';
+    }
+    deleteTask() {
+        return 'Tarea eliminada';
+    }
+    selectEquipment() {
+        return 'Cliente seleccionado';
+    }
+    selectUser() {
+        return 'Usuario seleccionado';
+    }
 };
 TaskService = __decorate([
     (0, common_1.Injectable)()

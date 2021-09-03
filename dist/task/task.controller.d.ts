@@ -1,3 +1,5 @@
+import { TaskService } from './task.service';
 export declare class TaskController {
-    getTasks(): string;
+    private taskService;
+    constructor(taskService: TaskService);
 }
