@@ -30,13 +30,25 @@ __decorate([
     __metadata("design:type", String)
 ], Task.prototype, "description", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ type: String, default: "New" }),
     __metadata("design:type", String)
 ], Task.prototype, "state", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ type: Date, default: Date.now }),
     __metadata("design:type", Date)
 ], Task.prototype, "createdAt", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Task.prototype, "obsrvation", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Task.prototype, "startTask", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Task.prototype, "finishTask", void 0);
 Task = __decorate([
     (0, mongoose_1.Schema)()
 ], Task);

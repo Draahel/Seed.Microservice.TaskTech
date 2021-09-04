@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-
 export type TaskDocument = Task & Document;
 
 @Schema()
@@ -17,11 +16,20 @@ export class Task {
     @Prop()
     description:String;
 
-    @Prop()
+    @Prop({type:String, default:"New"})
     state:String;
 
     @Prop({type:Date, default:Date.now})
     createdAt:Date;
+
+    @Prop()
+    obsrvation:String;
+
+    @Prop()
+    startTask:Date;
+
+    @Prop()
+    finishTask:Date;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);
