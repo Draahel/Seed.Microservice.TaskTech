@@ -36,7 +36,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({ type: Date, default: Date.now }),
     __metadata("design:type", Date)
-], Task.prototype, "date", void 0);
+], Task.prototype, "createdAt", void 0);
 Task = __decorate([
     (0, mongoose_1.Schema)()
 ], Task);

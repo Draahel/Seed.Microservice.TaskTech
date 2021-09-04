@@ -21,7 +21,7 @@ export class Task {
     state:String;
 
     @Prop({type:Date, default:Date.now})
-    date:Date;
+    createdAt:Date;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

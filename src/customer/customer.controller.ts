@@ -1,33 +1,34 @@
 import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
+import { Customer } from './schemas/customer.schema';
 
 @Controller('api/customer')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
 
   @Post('create-customer')
-  createCustomer(@Body() customer: CreateCustomerDto) {
-    return this.customerService.createCustomer(customer);
+  async createCustomer(@Body() customer: CreateCustomerDto):Promise<Customer> {
+    return await this.customerService.createCustomer(customer);
   }
 
   @Get('get-all-customers')
-  getCustomers() {
-    return this.customerService.getCustomers();
+  async getCustomers():Promise<Customer[]>{
+    return await this.customerService.getCustomers();
   }
 
   @Get('get-customer-by-id/:id')
-  getCustomer(@Param('id') id: string) {
-    return this.customerService.getCustomer(id);
+  async getCustomer(@Param('id') id:string):Promise<Customer>{
+    return await this.customerService.getCustomer(id);
   }
 
   @Put('update-customer/:id')
-  updateCustomer(@Param('id') id: string, @Body() customer: CreateCustomerDto) {
-    return this.customerService.updateCustomer(id, customer);
+  async updateCustomer(@Param('id') id: string, @Body() customer: CreateCustomerDto):Promise<Customer>{
+    return await this.customerService.updateCustomer(id, customer);
   }
 
   @Delete('delete-customer/:id')
-  deleteCustomer(@Param('id') id: string) {
-    return this.customerService.deleteCustomer(id);
+  async deleteCustomer(@Param('id') id: string) {
+    return await this.customerService.deleteCustomer(id);
   }
 }

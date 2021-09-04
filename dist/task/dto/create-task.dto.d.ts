@@ -4,5 +4,5 @@ export declare class CreateTaskDto {
     readonly assignedTo: String;
     readonly description: String;
     readonly state: String;
-    date: Date;
+    readonly createdAt: Date;
 }

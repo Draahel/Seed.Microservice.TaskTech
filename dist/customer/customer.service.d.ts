@@ -1,8 +1,12 @@
+import { Model } from 'mongoose';
 import { CreateCustomerDto } from './dto/create-customer.dto';
+import { Customer, CustomerDocument } from './schemas/customer.schema';
 export declare class CustomerService {
-    createCustomer(customer: CreateCustomerDto): string;
-    getCustomers(): string;
-    getCustomer(id: string): string;
-    updateCustomer(id: string, customer: CreateCustomerDto): string;
-    deleteCustomer(id: string): string;
+    private customerModel;
+    constructor(customerModel: Model<CustomerDocument>);
+    createCustomer(customer: CreateCustomerDto): Promise<Customer>;
+    getCustomers(): Promise<Customer[]>;
+    getCustomer(id: string): Promise<Customer>;
+    updateCustomer(id: string, customer: CreateCustomerDto): Promise<Customer>;
+    deleteCustomer(id: string): import("mongoose").Query<CustomerDocument, CustomerDocument, {}, CustomerDocument>;
 }

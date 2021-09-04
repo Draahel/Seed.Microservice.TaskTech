@@ -20,20 +20,20 @@ let CustomerController = class CustomerController {
     constructor(customerService) {
         this.customerService = customerService;
     }
-    createCustomer(customer) {
-        return this.customerService.createCustomer(customer);
+    async createCustomer(customer) {
+        return await this.customerService.createCustomer(customer);
     }
-    getCustomers() {
-        return this.customerService.getCustomers();
+    async getCustomers() {
+        return await this.customerService.getCustomers();
     }
-    getCustomer(id) {
-        return this.customerService.getCustomer(id);
+    async getCustomer(id) {
+        return await this.customerService.getCustomer(id);
     }
-    updateCustomer(id, customer) {
-        return this.customerService.updateCustomer(id, customer);
+    async updateCustomer(id, customer) {
+        return await this.customerService.updateCustomer(id, customer);
     }
-    deleteCustomer(id) {
-        return this.customerService.deleteCustomer(id);
+    async deleteCustomer(id) {
+        return await this.customerService.deleteCustomer(id);
     }
 };
 __decorate([
@@ -41,20 +41,20 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_customer_dto_1.CreateCustomerDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], CustomerController.prototype, "createCustomer", null);
 __decorate([
     (0, common_1.Get)('get-all-customers'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], CustomerController.prototype, "getCustomers", null);
 __decorate([
     (0, common_1.Get)('get-customer-by-id/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], CustomerController.prototype, "getCustomer", null);
 __decorate([
     (0, common_1.Put)('update-customer/:id'),
@@ -62,14 +62,14 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_customer_dto_1.CreateCustomerDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], CustomerController.prototype, "updateCustomer", null);
 __decorate([
     (0, common_1.Delete)('delete-customer/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], CustomerController.prototype, "deleteCustomer", null);
 CustomerController = __decorate([
     (0, common_1.Controller)('api/customer'),
