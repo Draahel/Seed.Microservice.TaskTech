@@ -1,9 +1,8 @@
 import { CreateCustomerDto } from './dto/create-customer.dto';
-import { UpdateCustomerDto } from './dto/update-customer.dto';
 export declare class CustomerService {
-    create(createCustomerDto: CreateCustomerDto): string;
-    findAll(): string;
-    findOne(id: number): string;
-    update(id: number, updateCustomerDto: UpdateCustomerDto): string;
-    remove(id: number): string;
+    createCustomer(customer: CreateCustomerDto): string;
+    getCustomers(): string;
+    getCustomer(id: string): string;
+    updateCustomer(id: string, customer: CreateCustomerDto): string;
+    deleteCustomer(id: string): string;
 }

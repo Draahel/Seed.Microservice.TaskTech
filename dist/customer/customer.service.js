@@ -9,19 +9,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerService = void 0;
 const common_1 = require("@nestjs/common");
 let CustomerService = class CustomerService {
-    create(createCustomerDto) {
+    createCustomer(customer) {
         return 'This action adds a new customer';
     }
-    findAll() {
+    getCustomers() {
         return `This action returns all customer`;
     }
-    findOne(id) {
+    getCustomer(id) {
         return `This action returns a #${id} customer`;
     }
-    update(id, updateCustomerDto) {
+    updateCustomer(id, customer) {
         return `This action updates a #${id} customer`;
     }
-    remove(id) {
+    deleteCustomer(id) {
         return `This action removes a #${id} customer`;
     }
 };

@@ -11,70 +11,68 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerController = void 0;
 const common_1 = require("@nestjs/common");
 const customer_service_1 = require("./customer.service");
 const create_customer_dto_1 = require("./dto/create-customer.dto");
-const update_customer_dto_1 = require("./dto/update-customer.dto");
 let CustomerController = class CustomerController {
     constructor(customerService) {
         this.customerService = customerService;
     }
-    create(createCustomerDto) {
-        return this.customerService.create(createCustomerDto);
+    createCustomer(customer) {
+        return this.customerService.createCustomer(customer);
     }
-    findAll() {
-        return this.customerService.findAll();
+    getCustomers() {
+        return this.customerService.getCustomers();
     }
-    findOne(id) {
-        return this.customerService.findOne(+id);
+    getCustomer(id) {
+        return this.customerService.getCustomer(id);
     }
-    update(id, updateCustomerDto) {
-        return this.customerService.update(+id, updateCustomerDto);
+    updateCustomer(id, customer) {
+        return this.customerService.updateCustomer(id, customer);
     }
-    remove(id) {
-        return this.customerService.remove(+id);
+    deleteCustomer(id) {
+        return this.customerService.deleteCustomer(id);
     }
 };
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('create-customer'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_customer_dto_1.CreateCustomerDto]),
     __metadata("design:returntype", void 0)
-], CustomerController.prototype, "create", null);
+], CustomerController.prototype, "createCustomer", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('get-all-customers'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], CustomerController.prototype, "findAll", null);
+], CustomerController.prototype, "getCustomers", null);
 __decorate([
-    (0, common_1.Get)(':id'),
+    (0, common_1.Get)('get-customer-by-id/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], CustomerController.prototype, "findOne", null);
+], CustomerController.prototype, "getCustomer", null);
 __decorate([
-    (0, common_1.Patch)(':id'),
+    (0, common_1.Put)('update-customer/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, typeof (_a = typeof update_customer_dto_1.UpdateCustomerDto !== "undefined" && update_customer_dto_1.UpdateCustomerDto) === "function" ? _a : Object]),
+    __metadata("design:paramtypes", [String, create_customer_dto_1.CreateCustomerDto]),
     __metadata("design:returntype", void 0)
-], CustomerController.prototype, "update", null);
+], CustomerController.prototype, "updateCustomer", null);
 __decorate([
-    (0, common_1.Delete)(':id'),
+    (0, common_1.Delete)('delete-customer/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], CustomerController.prototype, "remove", null);
+], CustomerController.prototype, "deleteCustomer", null);
 CustomerController = __decorate([
-    (0, common_1.Controller)('customer'),
+    (0, common_1.Controller)('api/customer'),
     __metadata("design:paramtypes", [customer_service_1.CustomerService])
 ], CustomerController);
 exports.CustomerController = CustomerController;
