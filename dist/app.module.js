@@ -17,7 +17,7 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/taskTechDB'), task_module_1.TaskModule, user_module_1.UserModule],
+        imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/taskTechDB', { useFindAndModify: false }), task_module_1.TaskModule, user_module_1.UserModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

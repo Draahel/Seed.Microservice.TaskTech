@@ -6,7 +6,7 @@ import { TaskModule } from './task/task.module';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/taskTechDB'),TaskModule, UserModule],
+  imports: [MongooseModule.forRoot('mongodb://localhost/taskTechDB',{useFindAndModify:false}),TaskModule, UserModule],
   controllers: [AppController],
   providers: [AppService],
 })

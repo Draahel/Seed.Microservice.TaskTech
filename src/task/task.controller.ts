@@ -21,10 +21,10 @@ export class TaskController {
         return this.taskService.createTask(task);
     }
 
-    // @Put('update-task')
-    // updateTask(){
-    //     return this.taskService.updateTask();
-    // }
+    @Put('update-task/:taskId')
+    updateTask(@Param('taskId') taskId:String, @Body() task:CreateTaskDto){
+        return this.taskService.updateTask(taskId, task);
+    }
 
     @Delete('delete-task/:taskId')
     deteleTask(@Param('taskId') taskId){
