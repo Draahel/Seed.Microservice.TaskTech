@@ -1,5 +1,6 @@
 export class CreateUserDto{
     name:String;
+    lastname:String;
     tipoIdent:String;
     nIdent:Number;
     email:String;
