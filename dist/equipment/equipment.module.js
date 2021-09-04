@@ -10,10 +10,13 @@ exports.EquipmentModule = void 0;
 const common_1 = require("@nestjs/common");
 const equipment_service_1 = require("./equipment.service");
 const equipment_controller_1 = require("./equipment.controller");
+const mongoose_1 = require("@nestjs/mongoose");
+const equipment_schema_1 = require("./schemas/equipment.schema");
 let EquipmentModule = class EquipmentModule {
 };
 EquipmentModule = __decorate([
     (0, common_1.Module)({
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: 'Equipment', schema: equipment_schema_1.EquipmentSchema }])],
         controllers: [equipment_controller_1.EquipmentController],
         providers: [equipment_service_1.EquipmentService]
     })
