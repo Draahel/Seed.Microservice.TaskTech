@@ -7,6 +7,5 @@ export declare class TaskController {
     getTask(taskId: String): Promise<import("./schemas/task.schema").Task>;
     getTasks(): Promise<import("./schemas/task.schema").Task[]>;
     createTask(task: CreateTaskDto): Promise<import("./schemas/task.schema").Task>;
-    updateTask(): Promise<import("./schemas/task.schema").Task>;
     deteleTask(taskId: any): import("mongoose").Query<import("./schemas/task.schema").TaskDocument, import("./schemas/task.schema").TaskDocument, {}, import("./schemas/task.schema").TaskDocument>;
 }
