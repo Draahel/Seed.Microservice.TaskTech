@@ -20,20 +20,20 @@ let EquipmentController = class EquipmentController {
     constructor(equipmentService) {
         this.equipmentService = equipmentService;
     }
-    createEquipment(equipment) {
-        return this.equipmentService.createEquipment(equipment);
+    async createEquipment(equipment) {
+        return await this.equipmentService.createEquipment(equipment);
     }
-    getEquipments() {
-        return this.equipmentService.getEquipments();
+    async getEquipments() {
+        return await this.equipmentService.getEquipments();
     }
-    getEquipment(id) {
-        return this.equipmentService.getEquipment(id);
+    async getEquipment(id) {
+        return await this.equipmentService.getEquipment(id);
     }
-    updateEquipment(id, equipment) {
-        return this.equipmentService.updateEquipment(id, equipment);
+    async updateEquipment(id, equipment) {
+        return await this.equipmentService.updateEquipment(id, equipment);
     }
-    deleteEquipment(id) {
-        return this.equipmentService.deleteEquipment(id);
+    async deleteEquipment(id) {
+        return await this.equipmentService.deleteEquipment(id);
     }
 };
 __decorate([
@@ -41,20 +41,20 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_equipment_dto_1.CreateEquipmentDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "createEquipment", null);
 __decorate([
     (0, common_1.Get)('get-all-equipments'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "getEquipments", null);
 __decorate([
     (0, common_1.Get)('get-equipment-by-id/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "getEquipment", null);
 __decorate([
     (0, common_1.Put)('update-equipment/:id'),
@@ -62,14 +62,14 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_equipment_dto_1.CreateEquipmentDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "updateEquipment", null);
 __decorate([
     (0, common_1.Delete)('delete-equipment/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "deleteEquipment", null);
 EquipmentController = __decorate([
     (0, common_1.Controller)('api/equipment'),
