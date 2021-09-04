@@ -20,22 +20,22 @@ let EquipmentService = class EquipmentService {
     constructor(equipmentModel) {
         this.equipmentModel = equipmentModel;
     }
-    createEquipment(equipment) {
-        const newEquipment = new this.equipmentModel(equipment);
+    async createEquipment(equipment) {
+        const newEquipment = await new this.equipmentModel(equipment);
         return newEquipment.save();
     }
-    getEquipments() {
-        return this.equipmentModel.find();
+    async getEquipments() {
+        return await this.equipmentModel.find();
     }
-    getEquipment(id) {
-        return this.equipmentModel.findById(id);
+    async getEquipment(id) {
+        return await this.equipmentModel.findById(id);
     }
-    updateEquipment(id, equipment) {
-        const updatedEquipment = this.equipmentModel.findByIdAndUpdate(id, equipment, { new: true });
+    async updateEquipment(id, equipment) {
+        const updatedEquipment = await this.equipmentModel.findByIdAndUpdate(id, equipment, { new: true });
         return updatedEquipment;
     }
-    deleteEquipment(id) {
-        return this.equipmentModel.findByIdAndDelete(id);
+    async deleteEquipment(id) {
+        return await this.equipmentModel.findByIdAndDelete(id);
     }
 };
 EquipmentService = __decorate([

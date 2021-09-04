@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateEquipmentDto } from './dto/create-equipment.dto';
-import { EquipmentDocument } from './schemas/equipment.schema';
+import { Equipment, EquipmentDocument } from './schemas/equipment.schema';
 
 @Injectable()
 export class EquipmentService {
@@ -10,21 +10,21 @@ export class EquipmentService {
     @InjectModel('Equipment') private equipmentModel: Model<EquipmentDocument>,
   ) {}
 
-  createEquipment(equipment: CreateEquipmentDto) {
-    const newEquipment = new this.equipmentModel(equipment);
+  async createEquipment(equipment: CreateEquipmentDto): Promise<Equipment> {
+    const newEquipment = await new this.equipmentModel(equipment);
     return newEquipment.save();
   }
 
-  getEquipments() {
-    return this.equipmentModel.find();
+  async getEquipments(): Promise<Equipment[]> {
+    return await this.equipmentModel.find();
   }
 
-  getEquipment(id: string) {
-    return this.equipmentModel.findById(id);
+  async getEquipment(id: string): Promise<Equipment> {
+    return await this.equipmentModel.findById(id);
   }
 
-  updateEquipment(id: string, equipment: CreateEquipmentDto) {
-    const updatedEquipment = this.equipmentModel.findByIdAndUpdate(
+  async updateEquipment(id: string, equipment: CreateEquipmentDto): Promise<Equipment> {
+    const updatedEquipment = await this.equipmentModel.findByIdAndUpdate(
       id,
       equipment,
       { new: true },
@@ -32,7 +32,7 @@ export class EquipmentService {
     return updatedEquipment;
   }
 
-  deleteEquipment(id: string) {
-    return this.equipmentModel.findByIdAndDelete(id);
+  async deleteEquipment(id: string): Promise<Equipment> {
+    return await this.equipmentModel.findByIdAndDelete(id);
   }
 }
