@@ -7,8 +7,8 @@ export class TaskController {
     constructor(private taskService:TaskService){}
     
     @Get('get-task-by-id/:taskId')
-    getTask(@Param('taskId') taskId:String){
-        return this.taskService.getTask(taskId);
+    async getTask(@Param('taskId') taskId:String){
+        return await this.taskService.getTask(taskId);
     }
 
     @Get('get-all-tasks')

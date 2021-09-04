@@ -30,8 +30,9 @@ let TaskService = class TaskService {
         const newTask = new this.taskModel(task);
         return await newTask.save();
     }
-    updateTask() {
-        return 'Tarea actualizada';
+    async updateTask(taskId, task) {
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
+        return updatedTask;
     }
     deleteTask(taskId) {
         return this.taskModel.findByIdAndDelete(taskId);

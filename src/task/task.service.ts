@@ -26,8 +26,9 @@ export class TaskService {
     }
 
     // Actualizar una tarea
-    updateTask(){
-        return 'Tarea actualizada';
+    async updateTask(taskId:String , task:CreateTaskDto):Promise<Task>{
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new:true});
+        return updatedTask;
     }
 
     // Eliminar una tarea

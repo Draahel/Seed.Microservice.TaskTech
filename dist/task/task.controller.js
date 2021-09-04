@@ -20,8 +20,8 @@ let TaskController = class TaskController {
     constructor(taskService) {
         this.taskService = taskService;
     }
-    getTask(taskId) {
-        return this.taskService.getTask(taskId);
+    async getTask(taskId) {
+        return await this.taskService.getTask(taskId);
     }
     getTasks() {
         return this.taskService.getTasks();
@@ -41,7 +41,7 @@ __decorate([
     __param(0, (0, common_1.Param)('taskId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TaskController.prototype, "getTask", null);
 __decorate([
     (0, common_1.Get)('get-all-tasks'),
