@@ -9,4 +9,5 @@ export declare class TaskService {
     createTask(task: CreateTaskDto): Promise<Task>;
     updateTask(taskId: String, task: CreateTaskDto): Promise<Task>;
     deleteTask(taskId: any): Promise<TaskDocument>;
+    setTimeStart(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
 }

@@ -39,5 +39,11 @@ export class TaskService {
         return await this.taskModel.findByIdAndDelete(taskId);
     }
 
+    async setTimeStart(taskId:string,task:CreateTaskDto){
+        task.timeStart = dayjs().utc().format();
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
+        return updatedTask;
+    }
+
     
 }

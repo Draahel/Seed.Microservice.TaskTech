@@ -40,6 +40,11 @@ let TaskService = class TaskService {
     async deleteTask(taskId) {
         return await this.taskModel.findByIdAndDelete(taskId);
     }
+    async setTimeStart(taskId, task) {
+        task.timeStart = dayjs().utc().format();
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
+        return updatedTask;
+    }
 };
 TaskService = __decorate([
     (0, common_1.Injectable)(),
