@@ -45,6 +45,11 @@ let TaskService = class TaskService {
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
+    async setTimeFinish(taskId, task) {
+        task.timeFinish = dayjs().utc().format();
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
+        return updatedTask;
+    }
 };
 TaskService = __decorate([
     (0, common_1.Injectable)(),

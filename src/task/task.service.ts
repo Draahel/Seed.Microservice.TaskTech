@@ -45,5 +45,11 @@ export class TaskService {
         return updatedTask;
     }
 
+    async setTimeFinish(taskId:string,task:CreateTaskDto){
+        task.timeFinish = dayjs().utc().format();
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
+        return updatedTask; 
+    }
+
     
 }
