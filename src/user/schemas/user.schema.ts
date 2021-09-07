@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
-
+import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
+dayjs.extend(utc);
 export type UserDocument = User & Document;
 
 @Schema()
@@ -21,6 +23,12 @@ export class User{
     email:String;
 
     @Prop({required:true})
+    birthday:String;
+
+    @Prop()
+    img:String;
+
+    @Prop({required:true})
     age:Number;
 
     @Prop()
@@ -32,8 +40,8 @@ export class User{
     @Prop({type:Boolean, default:true})
     state:Boolean;
 
-    @Prop({type:Date, default:Date.now})
-    createdAt:Date;
+    @Prop({type:String, default:dayjs().utc().format()})
+    createdAt:String;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

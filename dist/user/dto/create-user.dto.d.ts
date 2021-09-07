@@ -1,12 +1,14 @@
 export declare class CreateUserDto {
-    name: String;
-    lastname: String;
-    tipoIdent: String;
-    nIdent: Number;
+    readonly name: String;
+    readonly lastname: String;
+    readonly tipoIdent: String;
+    readonly nIdent: Number;
+    readonly birthday: String;
+    img: String;
     email: String;
     age: Number;
     cellphone: Number;
     password: String;
     state: Boolean;
-    createdAt: Date;
+    readonly createdAt: String;
 }

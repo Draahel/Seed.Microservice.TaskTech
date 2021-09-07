@@ -8,5 +8,5 @@ export declare class UserController {
     getUsers(): Promise<User[]>;
     getUser(id: string): Promise<User>;
     updateUser(id: string, user: CreateUserDto): Promise<User>;
-    deleteUser(id: string): Promise<import("./schemas/user.schema").UserDocument>;
+    deleteUser(id: string): Promise<User>;
 }

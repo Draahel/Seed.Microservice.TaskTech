@@ -30,12 +30,16 @@ let UserService = class UserService {
     async getUser(id) {
         return await this.UserModel.findById(id);
     }
-    async updateUser(id, User) {
-        const updatedUser = await this.UserModel.findByIdAndUpdate(id, User, { new: true });
+    async updateUser(id, user) {
+        const updatedUser = await this.UserModel.findByIdAndUpdate(id, user, { new: true });
         return updatedUser;
     }
-    deleteUser(id) {
-        return this.UserModel.findByIdAndDelete(id);
+    async deleteUser(id) {
+        return await this.UserModel.findByIdAndDelete(id);
+    }
+    async changePassword(id, user) {
+        const updatedPass = await this.UserModel.findByIdAndUpdate(id, user, { new: true });
+        return updatedPass;
     }
 };
 UserService = __decorate([

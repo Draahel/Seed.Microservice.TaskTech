@@ -11,6 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserSchema = exports.User = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+dayjs.extend(utc);
 let User = class User {
 };
 __decorate([
@@ -35,6 +38,14 @@ __decorate([
 ], User.prototype, "email", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], User.prototype, "birthday", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], User.prototype, "img", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", Number)
 ], User.prototype, "age", void 0);
 __decorate([
@@ -50,8 +61,8 @@ __decorate([
     __metadata("design:type", Boolean)
 ], User.prototype, "state", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: Date, default: Date.now }),
-    __metadata("design:type", Date)
+    (0, mongoose_1.Prop)({ type: String, default: dayjs().utc().format() }),
+    __metadata("design:type", String)
 ], User.prototype, "createdAt", void 0);
 User = __decorate([
     (0, mongoose_1.Schema)()

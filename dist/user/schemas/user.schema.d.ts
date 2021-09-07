@@ -6,10 +6,12 @@ export declare class User {
     tipoIdent: String;
     nIdent: Number;
     email: String;
+    birthday: String;
+    img: String;
     age: Number;
     cellphone: Number;
     password: String;
     state: Boolean;
-    createdAt: Date;
+    createdAt: String;
 }
 export declare const UserSchema: import("mongoose").Schema<Document<User, any, any>, import("mongoose").Model<Document<User, any, any>, any, any>, undefined, {}>;

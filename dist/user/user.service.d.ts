@@ -7,6 +7,7 @@ export declare class UserService {
     createUser(user: CreateUserDto): Promise<User>;
     getUsers(): Promise<User[]>;
     getUser(id: string): Promise<User>;
-    updateUser(id: string, User: CreateUserDto): Promise<User>;
-    deleteUser(id: string): import("mongoose").Query<UserDocument, UserDocument, {}, UserDocument>;
+    updateUser(id: string, user: CreateUserDto): Promise<User>;
+    deleteUser(id: string): Promise<User>;
+    changePassword(id: string, user: CreateUserDto): Promise<UserDocument>;
 }
