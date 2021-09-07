@@ -37,6 +37,9 @@ let EquipmentService = class EquipmentService {
     async deleteEquipment(id) {
         return await this.equipmentModel.findByIdAndDelete(id);
     }
+    findForCustomer(customerId) {
+        return this.equipmentModel.find({ customer: customerId });
+    }
 };
 EquipmentService = __decorate([
     (0, common_1.Injectable)(),

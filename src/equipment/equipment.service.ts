@@ -35,4 +35,8 @@ export class EquipmentService {
   async deleteEquipment(id: string): Promise<Equipment> {
     return await this.equipmentModel.findByIdAndDelete(id);
   }
+
+  findForCustomer(customerId){
+    return this.equipmentModel.find({customer:customerId});
+  }
 }

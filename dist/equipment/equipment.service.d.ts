@@ -9,4 +9,5 @@ export declare class EquipmentService {
     getEquipment(id: string): Promise<Equipment>;
     updateEquipment(id: string, equipment: CreateEquipmentDto): Promise<Equipment>;
     deleteEquipment(id: string): Promise<Equipment>;
+    findForCustomer(customerId: any): import("mongoose").Query<EquipmentDocument[], EquipmentDocument, {}, EquipmentDocument>;
 }
