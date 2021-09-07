@@ -16,6 +16,9 @@ exports.TaskService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+dayjs.extend(utc);
 let TaskService = class TaskService {
     constructor(taskModel) {
         this.taskModel = taskModel;
@@ -34,8 +37,8 @@ let TaskService = class TaskService {
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
-    deleteTask(taskId) {
-        return this.taskModel.findByIdAndDelete(taskId);
+    async deleteTask(taskId) {
+        return await this.taskModel.findByIdAndDelete(taskId);
     }
 };
 TaskService = __decorate([

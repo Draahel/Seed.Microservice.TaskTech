@@ -1,4 +1,3 @@
-/// <reference types="mongoose" />
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TaskService } from './task.service';
 export declare class TaskController {
@@ -8,5 +7,5 @@ export declare class TaskController {
     getTasks(): Promise<import("./schemas/task.schema").Task[]>;
     createTask(task: CreateTaskDto): Promise<import("./schemas/task.schema").Task>;
     updateTask(taskId: String, task: CreateTaskDto): Promise<import("./schemas/task.schema").Task>;
-    deteleTask(taskId: any): import("mongoose").Query<import("./schemas/task.schema").TaskDocument, import("./schemas/task.schema").TaskDocument, {}, import("./schemas/task.schema").TaskDocument>;
+    deteleTask(taskId: any): Promise<import("./schemas/task.schema").TaskDocument>;
 }

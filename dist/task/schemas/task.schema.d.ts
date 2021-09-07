@@ -8,7 +8,7 @@ export declare class Task {
     state: String;
     createdAt: Date;
     obsrvation: String;
-    startTask: Date;
-    finishTask: Date;
+    timeStart: String;
+    timeFinish: String;
 }
 export declare const TaskSchema: import("mongoose").Schema<Document<Task, any, any>, import("mongoose").Model<Document<Task, any, any>, any, any>, undefined, {}>;

@@ -26,10 +26,10 @@ export class Task {
     obsrvation:String;
 
     @Prop()
-    startTask:Date;
+    timeStart:String;
 
     @Prop()
-    finishTask:Date;
+    timeFinish:String;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

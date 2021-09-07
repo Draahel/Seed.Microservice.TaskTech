@@ -8,5 +8,5 @@ export declare class TaskService {
     getTasks(): Promise<Task[]>;
     createTask(task: CreateTaskDto): Promise<Task>;
     updateTask(taskId: String, task: CreateTaskDto): Promise<Task>;
-    deleteTask(taskId: any): import("mongoose").Query<TaskDocument, TaskDocument, {}, TaskDocument>;
+    deleteTask(taskId: any): Promise<TaskDocument>;
 }

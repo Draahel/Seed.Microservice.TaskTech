@@ -3,6 +3,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { Task, TaskDocument } from './schemas/task.schema';
+import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
+dayjs.extend(utc);
 
 @Injectable()
 export class TaskService {
@@ -32,7 +35,9 @@ export class TaskService {
     }
 
     // Eliminar una tarea
-    deleteTask(taskId){
-        return this.taskModel.findByIdAndDelete(taskId);
+    async deleteTask(taskId){
+        return await this.taskModel.findByIdAndDelete(taskId);
     }
+
+    
 }

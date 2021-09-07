@@ -43,12 +43,12 @@ __decorate([
 ], Task.prototype, "obsrvation", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", Date)
-], Task.prototype, "startTask", void 0);
+    __metadata("design:type", String)
+], Task.prototype, "timeStart", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", Date)
-], Task.prototype, "finishTask", void 0);
+    __metadata("design:type", String)
+], Task.prototype, "timeFinish", void 0);
 Task = __decorate([
     (0, mongoose_1.Schema)()
 ], Task);
