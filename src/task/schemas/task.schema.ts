@@ -30,6 +30,9 @@ export class Task {
 
     @Prop()
     timeFinish:String;
+
+    @Prop()
+    dedicatedTime:String;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

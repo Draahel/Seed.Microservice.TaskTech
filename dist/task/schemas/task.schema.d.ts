@@ -10,5 +10,6 @@ export declare class Task {
     obsrvation: String;
     timeStart: String;
     timeFinish: String;
+    dedicatedTime: String;
 }
 export declare const TaskSchema: import("mongoose").Schema<Document<Task, any, any>, import("mongoose").Model<Document<Task, any, any>, any, any>, undefined, {}>;

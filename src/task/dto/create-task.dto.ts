@@ -4,7 +4,8 @@ export class CreateTaskDto{
     assignedTo:String;
     description:String;
     timeStart:String;
-    timeFinish:String
+    timeFinish:String;
+    dedicatedTime:String;
     observatio:String;
     state:String;
     createdAt:Date;

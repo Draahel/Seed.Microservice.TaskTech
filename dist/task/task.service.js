@@ -50,6 +50,12 @@ let TaskService = class TaskService {
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
+    async calculateTime(taskId, task) {
+        const { timeStart, timeFinish } = await this.taskModel.findById(taskId);
+        task.dedicatedTime = dayjs(timeFinish.toString()).diff(timeStart.toString(), 'minutes').toString();
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
+        return updatedTask;
+    }
 };
 TaskService = __decorate([
     (0, common_1.Injectable)(),

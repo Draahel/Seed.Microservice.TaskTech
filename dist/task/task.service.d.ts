@@ -11,4 +11,5 @@ export declare class TaskService {
     deleteTask(taskId: any): Promise<TaskDocument>;
     setTimeStart(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
     setTimeFinish(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
+    calculateTime(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
 }

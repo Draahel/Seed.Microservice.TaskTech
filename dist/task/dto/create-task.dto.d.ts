@@ -5,6 +5,7 @@ export declare class CreateTaskDto {
     description: String;
     timeStart: String;
     timeFinish: String;
+    dedicatedTime: String;
     observatio: String;
     state: String;
     createdAt: Date;

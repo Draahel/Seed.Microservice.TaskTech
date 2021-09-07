@@ -51,5 +51,10 @@ export class TaskService {
         return updatedTask; 
     }
 
-    
+    async calculateTime(taskId: string, task: CreateTaskDto) {
+        const { timeStart, timeFinish } = await this.taskModel.findById(taskId);
+        task.dedicatedTime=dayjs(timeFinish.toString()).diff(timeStart.toString(),'minutes').toString();
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
+        return updatedTask;
+    }
 }
