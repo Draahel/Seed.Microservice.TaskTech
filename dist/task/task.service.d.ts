@@ -12,4 +12,7 @@ export declare class TaskService {
     setTimeStart(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
     setTimeFinish(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
     calculateTime(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
+    startTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
+    finishTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
+    pauseTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
 }

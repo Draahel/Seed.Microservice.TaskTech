@@ -11,22 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TaskSchema = exports.Task = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+dayjs.extend(utc);
 let Task = class Task {
 };
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Task.prototype, "name", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Task.prototype, "equipment", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)([String]),
+    __metadata("design:type", Array)
 ], Task.prototype, "assignedTo", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Task.prototype, "description", void 0);
 __decorate([
@@ -34,8 +37,8 @@ __decorate([
     __metadata("design:type", String)
 ], Task.prototype, "state", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: Date, default: Date.now }),
-    __metadata("design:type", Date)
+    (0, mongoose_1.Prop)({ type: String, default: dayjs().utc().format() }),
+    __metadata("design:type", String)
 ], Task.prototype, "createdAt", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),

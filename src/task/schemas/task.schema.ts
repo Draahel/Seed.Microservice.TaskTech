@@ -1,26 +1,29 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
+dayjs.extend(utc);
 export type TaskDocument = Task & Document;
 
 @Schema()
 export class Task {
-    @Prop()
+    @Prop({required:true})
     name:String;
 
-    @Prop()
+    @Prop({required:true})
     equipment:String;
     
-    @Prop()
-    assignedTo:String;
+    @Prop([String])
+    assignedTo:String[];
 
-    @Prop()
+    @Prop({required:true})
     description:String;
 
     @Prop({type:String, default:"New"})
     state:String;
 
-    @Prop({type:Date, default:Date.now})
-    createdAt:Date;
+    @Prop({type:String, default:dayjs().utc().format()})
+    createdAt:String;
 
     @Prop()
     obsrvation:String;

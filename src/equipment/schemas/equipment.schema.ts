@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
+import * as mongoose from 'mongoose';
+import { Customer } from "src/customer/schemas/customer.schema";
 
 export type EquipmentDocument = Equipment & Document;
 
@@ -19,7 +21,7 @@ export class Equipment {
     ubicacion:String;
 
     @Prop()
-    cliente:String;
+    customer:String;
 
     @Prop({type:Date, default:Date.now})
     createdAt:Date;

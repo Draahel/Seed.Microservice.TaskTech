@@ -3,10 +3,10 @@ export declare type TaskDocument = Task & Document;
 export declare class Task {
     name: String;
     equipment: String;
-    assignedTo: String;
+    assignedTo: String[];
     description: String;
     state: String;
-    createdAt: Date;
+    createdAt: String;
     obsrvation: String;
     timeStart: String;
     timeFinish: String;

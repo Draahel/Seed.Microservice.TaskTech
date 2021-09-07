@@ -56,6 +56,21 @@ let TaskService = class TaskService {
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
+    async startTask(taskId, task) {
+        task.state = "En proceso";
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
+        return updatedTask;
+    }
+    async finishTask(taskId, task) {
+        task.state = "Finalizada";
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
+        return updatedTask;
+    }
+    async pauseTask(taskId, task) {
+        task.state = "En pausa";
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
+        return updatedTask;
+    }
 };
 TaskService = __decorate([
     (0, common_1.Injectable)(),

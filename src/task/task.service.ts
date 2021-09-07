@@ -57,4 +57,23 @@ export class TaskService {
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
         return updatedTask;
     }
+
+    async startTask(taskId:string,task:CreateTaskDto){
+        task.state = "En proceso";
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
+        return updatedTask;
+    }
+
+    async finishTask(taskId:string,task:CreateTaskDto){
+        task.state = "Finalizada";
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
+        return updatedTask;
+    }
+
+    async pauseTask(taskId:string,task:CreateTaskDto){
+        task.state = "En pausa";
+        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
+        return updatedTask;
+    }
+
 }
