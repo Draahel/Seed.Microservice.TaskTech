@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto} from './dto/update-task.dto';
 import { Task } from './schemas/task.schema';
@@ -10,7 +10,11 @@ export class TaskController {
     
     @Get('get-task-by-id/:taskId')
     async getTask(@Param('taskId') taskId:String){
-        return await this.taskService.getTask(taskId);
+        const res = await this.taskService.getTask(taskId);
+        if(res == null){
+            throw new HttpException("Tarea no encontrada", HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
 
     @Get('get-all-tasks')

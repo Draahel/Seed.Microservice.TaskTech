@@ -22,7 +22,11 @@ let TaskController = class TaskController {
         this.taskService = taskService;
     }
     async getTask(taskId) {
-        return await this.taskService.getTask(taskId);
+        const res = await this.taskService.getTask(taskId);
+        if (res == null) {
+            throw new common_1.HttpException("Tarea no encontrada", common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
     async getTasks() {
         return await this.taskService.getTasks();
