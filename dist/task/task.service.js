@@ -52,15 +52,16 @@ let TaskService = class TaskService {
         const task = new create_task_dto_1.CreateTaskDto;
         task.timeFinish = dayjs().utc().format();
         task.state = "Finalizada";
+        const timeFinish = task.timeFinish.toString();
+        task.dedicatedTime = (await this.calculateTime(taskId, timeFinish)).toString();
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
-    async calculateTime(taskId) {
+    async calculateTime(taskId, timeFinish) {
         const task = new create_task_dto_1.CreateTaskDto;
-        const { timeStart, timeFinish } = await this.taskModel.findById(taskId);
-        task.dedicatedTime = dayjs(timeFinish.toString()).diff(timeStart.toString(), 'minutes').toString();
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
-        return updatedTask;
+        const { timeStart } = await this.taskModel.findById(taskId);
+        const dedicatedTime = dayjs(timeFinish).diff(timeStart.toString(), 'minutes');
+        return dedicatedTime;
     }
     async pauseTask(taskId) {
         const task = new create_task_dto_1.CreateTaskDto;

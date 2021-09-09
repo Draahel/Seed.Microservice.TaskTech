@@ -11,7 +11,7 @@ export declare class TaskService {
     deleteTask(taskId: any): Promise<Task>;
     startTask(taskId: string): Promise<Task>;
     finishTask(taskId: string): Promise<Task>;
-    calculateTime(taskId: string): Promise<Task>;
+    calculateTime(taskId: string, timeFinish: string): Promise<number>;
     pauseTask(taskId: string): Promise<Task>;
     getByEquipment(equipmentId: any): Promise<Task[]>;
     getByUser(userId: any): Promise<Task[]>;
