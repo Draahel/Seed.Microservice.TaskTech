@@ -63,12 +63,6 @@ let TaskService = class TaskService {
         const dedicatedTime = dayjs(timeFinish).diff(timeStart.toString(), 'minutes');
         return dedicatedTime;
     }
-    async pauseTask(taskId) {
-        const task = new create_task_dto_1.CreateTaskDto;
-        task.state = "En pausa";
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
-        return updatedTask;
-    }
     async getByEquipment(equipmentId) {
         return await this.taskModel.find({ equipment: equipmentId }).exec();
     }

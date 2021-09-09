@@ -67,13 +67,6 @@ export class TaskService {
         return dedicatedTime;
     }
 
-    async pauseTask(taskId:string):Promise<Task>{
-        const task = new CreateTaskDto;
-        task.state = "En pausa";
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
-        return updatedTask;
-    }
-
     async getByEquipment(equipmentId): Promise<Task[]>{
         return await this.taskModel.find({equipment:equipmentId}).exec();
     }
