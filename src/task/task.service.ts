@@ -15,12 +15,22 @@ export class TaskService {
     
     // Obtener una tarea por id
     async getTask(taskId):Promise<Task>{
-        return await this.taskModel.findById(taskId).exec();
+        try {
+            return await this.taskModel.findById(taskId).exec();
+        } catch (error) {
+            return null;
+        }
+        
     }
 
     // Listar todas las tareas
     async getTasks():Promise<Task[]>{
-        return await this.taskModel.find().exec();
+        try {
+            return await this.taskModel.find().exec();
+        } catch (error) {
+            return null;
+        }
+        
     }
 
     // Crear una tarea
@@ -31,8 +41,11 @@ export class TaskService {
 
     // Actualizar una tarea
     async updateTask(taskId:String , task:UpdateTaskDto):Promise<Task>{
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new:true});
-        return updatedTask;
+        try {
+            return await this.taskModel.findByIdAndUpdate(taskId, task, {new:true}).exec();
+        } catch (error) {
+            return null;
+        }
     }
 
     // Eliminar una tarea

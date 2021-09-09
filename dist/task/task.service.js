@@ -26,18 +26,32 @@ let TaskService = class TaskService {
         this.taskModel = taskModel;
     }
     async getTask(taskId) {
-        return await this.taskModel.findById(taskId).exec();
+        try {
+            return await this.taskModel.findById(taskId).exec();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async getTasks() {
-        return await this.taskModel.find().exec();
+        try {
+            return await this.taskModel.find().exec();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async createTask(task) {
         const newTask = new this.taskModel(task);
         return await newTask.save();
     }
     async updateTask(taskId, task) {
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
-        return updatedTask;
+        try {
+            return await this.taskModel.findByIdAndUpdate(taskId, task, { new: true }).exec();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async deleteTask(taskId) {
         return await this.taskModel.findByIdAndDelete(taskId);
