@@ -19,6 +19,7 @@ const mongoose_2 = require("mongoose");
 const create_task_dto_1 = require("./dto/create-task.dto");
 const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
+const update_task_dto_1 = require("./dto/update-task.dto");
 dayjs.extend(utc);
 let TaskService = class TaskService {
     constructor(taskModel) {
@@ -42,14 +43,14 @@ let TaskService = class TaskService {
         return await this.taskModel.findByIdAndDelete(taskId);
     }
     async startTask(taskId) {
-        const task = new create_task_dto_1.CreateTaskDto;
+        const task = new update_task_dto_1.UpdateTaskDto;
         task.timeStart = dayjs().utc().format();
         task.state = "En proceso";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
     async finishTask(taskId) {
-        const task = new create_task_dto_1.CreateTaskDto;
+        const task = new update_task_dto_1.UpdateTaskDto;
         task.timeFinish = dayjs().utc().format();
         task.state = "Finalizada";
         const timeFinish = task.timeFinish.toString();

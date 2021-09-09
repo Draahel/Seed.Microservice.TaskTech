@@ -1,12 +1,12 @@
 export class CreateTaskDto{
-    name:String;
-    equipment:String;
-    assignedTo:String[];
-    description:String;
-    timeStart:String;
-    timeFinish:String;
-    dedicatedTime:String;
-    observatio:String;
-    state:String;
-    createdAt:String;
+    readonly name:String;
+    readonly equipment:String;
+    readonly assignedTo:String[];
+    readonly description:String;
+    readonly timeStart:String;
+    readonly timeFinish:String;
+    readonly dedicatedTime:String;
+    readonly observatio:String;
+    readonly state:String;
+    readonly createdAt:String;
 }

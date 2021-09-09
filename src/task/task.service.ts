@@ -5,6 +5,7 @@ import { CreateTaskDto } from './dto/create-task.dto';
 import { Task, TaskDocument } from './schemas/task.schema';
 import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
+import { UpdateTaskDto } from './dto/update-task.dto';
 dayjs.extend(utc);
 
 @Injectable()
@@ -29,7 +30,7 @@ export class TaskService {
     }
 
     // Actualizar una tarea
-    async updateTask(taskId:String , task:CreateTaskDto):Promise<Task>{
+    async updateTask(taskId:String , task:UpdateTaskDto):Promise<Task>{
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new:true});
         return updatedTask;
     }
@@ -41,7 +42,7 @@ export class TaskService {
 
     //Iniciar tarea
     async startTask(taskId:string):Promise<Task>{
-        const task = new CreateTaskDto;
+        const task = new UpdateTaskDto;
         task.timeStart = dayjs().utc().format();
         task.state = "En proceso";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
@@ -50,7 +51,7 @@ export class TaskService {
 
     //Finalizar tarea
     async finishTask(taskId:string):Promise<Task>{
-        const task = new CreateTaskDto;
+        const task = new UpdateTaskDto;
         task.timeFinish = dayjs().utc().format();
         task.state = "Finalizada";
         const timeFinish = task.timeFinish.toString();
