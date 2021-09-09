@@ -15,4 +15,6 @@ export declare class TaskService {
     startTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
     finishTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
     pauseTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
+    getByEquipment(equipmentId: any): Promise<Task[]>;
+    getByUser(userId: any): Promise<TaskDocument[]>;
 }

@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
+import { Task } from './schemas/task.schema';
 import { TaskService } from './task.service';
 
 @Controller('api/task')
@@ -29,5 +30,9 @@ export class TaskController {
     @Delete('delete-task/:taskId')
     deteleTask(@Param('taskId') taskId){
         return this.taskService.deleteTask(taskId);
+    }
+    @Get('get-tasks-by-user-id/:userId')
+    async getByUser(@Param('userId') userId:string){
+        return this.taskService.getByUser(userId);
     }
 }

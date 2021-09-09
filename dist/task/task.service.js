@@ -24,10 +24,10 @@ let TaskService = class TaskService {
         this.taskModel = taskModel;
     }
     async getTask(taskId) {
-        return await this.taskModel.findById(taskId);
+        return await this.taskModel.findById(taskId).exec();
     }
     async getTasks() {
-        return await this.taskModel.find();
+        return await this.taskModel.find().exec();
     }
     async createTask(task) {
         const newTask = new this.taskModel(task);
@@ -70,6 +70,13 @@ let TaskService = class TaskService {
         task.state = "En pausa";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
+    }
+    async getByEquipment(equipmentId) {
+        return await this.taskModel.find({ equipment: equipmentId }).exec();
+    }
+    getByUser(userId) {
+        const tasks = this.taskModel.find({ assignedTo: userId }).exec();
+        return tasks;
     }
 };
 TaskService = __decorate([
