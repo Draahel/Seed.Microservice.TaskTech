@@ -23,8 +23,8 @@ let TaskController = class TaskController {
     async getTask(taskId) {
         return await this.taskService.getTask(taskId);
     }
-    getTasks() {
-        return this.taskService.getTasks();
+    async getTasks() {
+        return await this.taskService.getTasks();
     }
     createTask(task) {
         return this.taskService.createTask(task);
@@ -38,6 +38,12 @@ let TaskController = class TaskController {
     async getByUser(userId) {
         return this.taskService.getByUser(userId);
     }
+    async startTask(taskId) {
+        return await this.taskService.startTask(taskId);
+    }
+    async finishTask(taskId) {
+        return await this.taskService.finishTask(taskId);
+    }
 };
 __decorate([
     (0, common_1.Get)('get-task-by-id/:taskId'),
@@ -50,7 +56,7 @@ __decorate([
     (0, common_1.Get)('get-all-tasks'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TaskController.prototype, "getTasks", null);
 __decorate([
     (0, common_1.Post)('create-task'),
@@ -81,6 +87,20 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], TaskController.prototype, "getByUser", null);
+__decorate([
+    (0, common_1.Put)('start-task/:taskId'),
+    __param(0, (0, common_1.Param)('taskId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TaskController.prototype, "startTask", null);
+__decorate([
+    (0, common_1.Put)('finish-task/:taskId'),
+    __param(0, (0, common_1.Param)('taskId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], TaskController.prototype, "finishTask", null);
 TaskController = __decorate([
     (0, common_1.Controller)('api/task'),
     __metadata("design:paramtypes", [task_service_1.TaskService])

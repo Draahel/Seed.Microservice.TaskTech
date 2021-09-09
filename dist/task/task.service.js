@@ -16,6 +16,7 @@ exports.TaskService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const create_task_dto_1 = require("./dto/create-task.dto");
 const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
 dayjs.extend(utc);
@@ -40,33 +41,29 @@ let TaskService = class TaskService {
     async deleteTask(taskId) {
         return await this.taskModel.findByIdAndDelete(taskId);
     }
-    async setTimeStart(taskId, task) {
+    async startTask(taskId) {
+        const task = new create_task_dto_1.CreateTaskDto;
         task.timeStart = dayjs().utc().format();
+        task.state = "En proceso";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
-    async setTimeFinish(taskId, task) {
+    async finishTask(taskId) {
+        const task = new create_task_dto_1.CreateTaskDto;
         task.timeFinish = dayjs().utc().format();
+        task.state = "Finalizada";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
-    async calculateTime(taskId, task) {
+    async calculateTime(taskId) {
+        const task = new create_task_dto_1.CreateTaskDto;
         const { timeStart, timeFinish } = await this.taskModel.findById(taskId);
         task.dedicatedTime = dayjs(timeFinish.toString()).diff(timeStart.toString(), 'minutes').toString();
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
     }
-    async startTask(taskId, task) {
-        task.state = "En proceso";
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
-        return updatedTask;
-    }
-    async finishTask(taskId, task) {
-        task.state = "Finalizada";
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
-        return updatedTask;
-    }
-    async pauseTask(taskId, task) {
+    async pauseTask(taskId) {
+        const task = new create_task_dto_1.CreateTaskDto;
         task.state = "En pausa";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
@@ -74,8 +71,8 @@ let TaskService = class TaskService {
     async getByEquipment(equipmentId) {
         return await this.taskModel.find({ equipment: equipmentId }).exec();
     }
-    getByUser(userId) {
-        const tasks = this.taskModel.find({ assignedTo: userId }).exec();
+    async getByUser(userId) {
+        const tasks = await this.taskModel.find({ assignedTo: userId }).exec();
         return tasks;
     }
 };

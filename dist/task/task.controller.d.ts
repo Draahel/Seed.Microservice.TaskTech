@@ -8,6 +8,8 @@ export declare class TaskController {
     getTasks(): Promise<Task[]>;
     createTask(task: CreateTaskDto): Promise<Task>;
     updateTask(taskId: String, task: CreateTaskDto): Promise<Task>;
-    deteleTask(taskId: any): Promise<import("./schemas/task.schema").TaskDocument>;
-    getByUser(userId: string): Promise<import("./schemas/task.schema").TaskDocument[]>;
+    deteleTask(taskId: any): Promise<Task>;
+    getByUser(userId: string): Promise<Task[]>;
+    startTask(taskId: any): Promise<Task>;
+    finishTask(taskId: string): Promise<Task>;
 }

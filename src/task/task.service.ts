@@ -35,51 +35,50 @@ export class TaskService {
     }
 
     // Eliminar una tarea
-    async deleteTask(taskId){
+    async deleteTask(taskId):Promise<Task>{
         return await this.taskModel.findByIdAndDelete(taskId);
     }
 
-    async setTimeStart(taskId:string,task:CreateTaskDto){
+    //Iniciar tarea
+    async startTask(taskId:string):Promise<Task>{
+        const task = new CreateTaskDto;
         task.timeStart = dayjs().utc().format();
+        task.state = "En proceso";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
         return updatedTask;
     }
 
-    async setTimeFinish(taskId:string,task:CreateTaskDto){
+    //Finalizar tarea
+    async finishTask(taskId:string):Promise<Task>{
+        const task = new CreateTaskDto;
         task.timeFinish = dayjs().utc().format();
+        task.state = "Finalizada";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
         return updatedTask; 
     }
 
-    async calculateTime(taskId: string, task: CreateTaskDto) {
+    // Calcular tiempo del desarrollo de la tarea
+    async calculateTime(taskId: string):Promise<Task> {
+        const task = new CreateTaskDto;
         const { timeStart, timeFinish } = await this.taskModel.findById(taskId);
         task.dedicatedTime=dayjs(timeFinish.toString()).diff(timeStart.toString(),'minutes').toString();
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
         return updatedTask;
     }
 
-    async startTask(taskId:string,task:CreateTaskDto){
-        task.state = "En proceso";
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
-        return updatedTask;
-    }
-
-    async finishTask(taskId:string,task:CreateTaskDto){
-        task.state = "Finalizada";
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
-        return updatedTask;
-    }
-
-    async pauseTask(taskId:string,task:CreateTaskDto){
+    async pauseTask(taskId:string):Promise<Task>{
+        const task = new CreateTaskDto;
         task.state = "En pausa";
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
         return updatedTask;
     }
+
     async getByEquipment(equipmentId): Promise<Task[]>{
         return await this.taskModel.find({equipment:equipmentId}).exec();
     }
-    getByUser(userId){
-        const tasks = this.taskModel.find({assignedTo:userId}).exec();
+
+    async getByUser(userId):Promise<Task[]>{
+        const tasks = await this.taskModel.find({assignedTo:userId}).exec();
         return tasks;
     }
 }

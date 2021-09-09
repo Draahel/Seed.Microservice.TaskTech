@@ -13,8 +13,8 @@ export class TaskController {
     }
 
     @Get('get-all-tasks')
-    getTasks(){
-        return this.taskService.getTasks();
+    async getTasks(){
+        return await this.taskService.getTasks();
     }
 
     @Post('create-task')
@@ -34,5 +34,14 @@ export class TaskController {
     @Get('get-tasks-by-user-id/:userId')
     async getByUser(@Param('userId') userId:string){
         return this.taskService.getByUser(userId);
+    }
+    @Put('start-task/:taskId')
+    async startTask(@Param('taskId') taskId){
+        return await this.taskService.startTask(taskId);
+    }
+
+    @Put('finish-task/:taskId')
+    async finishTask(@Param('taskId') taskId:string):Promise<Task>{
+        return await this.taskService.finishTask(taskId);
     }
 }

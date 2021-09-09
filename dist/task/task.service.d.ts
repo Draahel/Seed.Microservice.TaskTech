@@ -8,13 +8,11 @@ export declare class TaskService {
     getTasks(): Promise<Task[]>;
     createTask(task: CreateTaskDto): Promise<Task>;
     updateTask(taskId: String, task: CreateTaskDto): Promise<Task>;
-    deleteTask(taskId: any): Promise<TaskDocument>;
-    setTimeStart(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
-    setTimeFinish(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
-    calculateTime(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
-    startTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
-    finishTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
-    pauseTask(taskId: string, task: CreateTaskDto): Promise<TaskDocument>;
+    deleteTask(taskId: any): Promise<Task>;
+    startTask(taskId: string): Promise<Task>;
+    finishTask(taskId: string): Promise<Task>;
+    calculateTime(taskId: string): Promise<Task>;
+    pauseTask(taskId: string): Promise<Task>;
     getByEquipment(equipmentId: any): Promise<Task[]>;
-    getByUser(userId: any): Promise<TaskDocument[]>;
+    getByUser(userId: any): Promise<Task[]>;
 }
