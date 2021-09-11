@@ -9,5 +9,6 @@ export declare class UserController {
     getUsers(): Promise<User[]>;
     getUser(id: string): Promise<User>;
     updateUser(id: string, user: UpdateUserDto): Promise<User>;
+    changePassword(id: any, user: UpdateUserDto): Promise<User>;
     deleteUser(id: string): Promise<User>;
 }

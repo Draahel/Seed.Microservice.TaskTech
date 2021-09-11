@@ -39,6 +39,11 @@ export class UserController {
     return await this.userService.updateUser(id, user);
   }
 
+  @Put('change-password/:id')
+  async changePassword(@Param('id') id, @Body() user:UpdateUserDto):Promise<User>{
+    return await this.userService.changePassword(id, user);
+  }
+
   @Delete('delete-user/:id')
   async deleteUser(@Param('id') id: string) {
     return await this.userService.deleteUser(id);
