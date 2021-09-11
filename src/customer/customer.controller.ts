@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { UpdateEquipmentDto } from 'src/equipment/dto/update-equipment.dto';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { Customer } from './schemas/customer.schema';
@@ -23,7 +24,7 @@ export class CustomerController {
   }
 
   @Put('update-customer/:id')
-  async updateCustomer(@Param('id') id: string, @Body() customer: CreateCustomerDto):Promise<Customer>{
+  async updateCustomer(@Param('id') id: string, @Body() customer: UpdateEquipmentDto):Promise<Customer>{
     return await this.customerService.updateCustomer(id, customer);
   }
 

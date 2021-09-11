@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { UpdateEquipmentDto } from 'src/equipment/dto/update-equipment.dto';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { Customer, CustomerDocument } from './schemas/customer.schema';
 
@@ -21,7 +22,7 @@ export class CustomerService {
     return await this.customerModel.findById(id);
   }
 
-  async updateCustomer(id: string, customer: CreateCustomerDto):Promise<Customer>{
+  async updateCustomer(id: string, customer: UpdateEquipmentDto):Promise<Customer>{
     const updatedCustomer = await this.customerModel.findByIdAndUpdate(id, customer, {new:true});
     return updatedCustomer;
   }

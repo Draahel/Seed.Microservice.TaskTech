@@ -16,6 +16,7 @@ exports.CustomerService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const update_equipment_dto_1 = require("../equipment/dto/update-equipment.dto");
 let CustomerService = class CustomerService {
     constructor(customerModel) {
         this.customerModel = customerModel;
