@@ -28,13 +28,25 @@ let CustomerController = class CustomerController {
         return await this.customerService.getCustomers();
     }
     async getCustomer(id) {
-        return await this.customerService.getCustomer(id);
+        const res = await this.customerService.getCustomer(id);
+        if (res == null) {
+            throw new common_1.HttpException('No se pudo encontrar el cliente', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
     async updateCustomer(id, customer) {
-        return await this.customerService.updateCustomer(id, customer);
+        const res = await this.customerService.updateCustomer(id, customer);
+        if (res == null) {
+            throw new common_1.HttpException('No se pudo encontrar el cliente', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
     async deleteCustomer(id) {
-        return await this.customerService.deleteCustomer(id);
+        const res = await this.customerService.deleteCustomer(id);
+        if (res == null) {
+            throw new common_1.HttpException('No se pudo encontrar el cliente', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
 };
 __decorate([

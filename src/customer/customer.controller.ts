@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, HttpException, HttpStatus } from '@nestjs/common';
 import { UpdateEquipmentDto } from 'src/equipment/dto/update-equipment.dto';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
@@ -20,16 +20,28 @@ export class CustomerController {
 
   @Get('get-customer-by-id/:id')
   async getCustomer(@Param('id') id:string):Promise<Customer>{
-    return await this.customerService.getCustomer(id);
+    const res = await this.customerService.getCustomer(id);
+    if (res == null) {
+      throw new HttpException('No se pudo encontrar el cliente', HttpStatus.NOT_FOUND);
+    }
+    return res;
   }
 
   @Put('update-customer/:id')
   async updateCustomer(@Param('id') id: string, @Body() customer: UpdateEquipmentDto):Promise<Customer>{
-    return await this.customerService.updateCustomer(id, customer);
+    const res = await this.customerService.updateCustomer(id, customer);
+    if (res == null) {
+      throw new HttpException('No se pudo encontrar el cliente', HttpStatus.NOT_FOUND);
+    }
+    return res;
   }
 
   @Delete('delete-customer/:id')
   async deleteCustomer(@Param('id') id: string) {
-    return await this.customerService.deleteCustomer(id);
+    const res = await this.customerService.deleteCustomer(id);
+    if (res == null) {
+      throw new HttpException('No se pudo encontrar el cliente', HttpStatus.NOT_FOUND);
+    }
+    return res;
   }
 }
