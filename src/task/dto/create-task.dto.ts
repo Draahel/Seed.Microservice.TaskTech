@@ -4,26 +4,26 @@ export class CreateTaskDto{
     
     @IsString()
     @IsNotEmpty({message:"La tarea debe tener un titulo."})
-    readonly name:String;
+    readonly name:string;
 
     @IsNotEmpty({message:"Debe asignarle un equipo a esta tarea."})
-    readonly equipment:String;
+    readonly equipment:string;
 
-    readonly assignedTo:String[];
+    readonly assignedTo:string[];
 
     @IsNotEmpty({message:"Debe tener una descripcion."})
     @MinLength(15,{message:"La descripcion debe tener minimo 15 caracteres."})
-    readonly description:String;
+    readonly description:string;
 
-    timeStart:String;
+    timeStart:string;
 
-    timeFinish:String;
+    timeFinish:string;
 
-    dedicatedTime:String;
+    dedicatedTime:string;
 
-    readonly observatio:String;
+    readonly observatio:string;
 
-    state:String;
+    state:string;
 
-    readonly createdAt:String;
+    readonly createdAt:string;
 }
