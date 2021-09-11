@@ -1,8 +1,15 @@
 export class CreateCustomerDto {
-    name:String;
-    nit:String;
-    direccion:String;
-    email:String;
-    tel:number;
-    state:Boolean;
+
+
+    readonly name:string;
+    
+    readonly nit:number;
+    
+    readonly direccion:string;
+    
+    readonly email:string;
+    
+    readonly tel:number;
+    
+    readonly state:boolean;
 }
