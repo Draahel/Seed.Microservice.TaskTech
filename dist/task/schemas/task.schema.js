@@ -25,7 +25,7 @@ __decorate([
     __metadata("design:type", String)
 ], Task.prototype, "equipment", void 0);
 __decorate([
-    (0, mongoose_1.Prop)([String]),
+    (0, mongoose_1.Prop)(),
     __metadata("design:type", Array)
 ], Task.prototype, "assignedTo", void 0);
 __decorate([
@@ -33,11 +33,11 @@ __decorate([
     __metadata("design:type", String)
 ], Task.prototype, "description", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, default: "New" }),
+    (0, mongoose_1.Prop)({ default: "New" }),
     __metadata("design:type", String)
 ], Task.prototype, "state", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, default: dayjs().utc().format() }),
+    (0, mongoose_1.Prop)({ default: dayjs().utc().format() }),
     __metadata("design:type", String)
 ], Task.prototype, "createdAt", void 0);
 __decorate([

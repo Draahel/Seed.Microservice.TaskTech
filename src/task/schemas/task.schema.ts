@@ -8,34 +8,34 @@ export type TaskDocument = Task & Document;
 @Schema()
 export class Task {
     @Prop({required:true})
-    name:String;
+    name:string;
 
     @Prop({required:true})
-    equipment:String;
+    equipment:string;
     
-    @Prop([String])
-    assignedTo:String[];
+    @Prop()
+    assignedTo:string[];
 
     @Prop({required:true})
-    description:String;
+    description:string;
 
-    @Prop({type:String, default:"New"})
-    state:String;
+    @Prop({ default:"New"})
+    state:string;
 
-    @Prop({type:String, default:dayjs().utc().format()})
-    createdAt:String;
-
-    @Prop()
-    obsrvation:String;
+    @Prop({default:dayjs().utc().format()})
+    createdAt:string;
 
     @Prop()
-    timeStart:String;
+    obsrvation:string;
 
     @Prop()
-    timeFinish:String;
+    timeStart:string;
 
     @Prop()
-    dedicatedTime:String;
+    timeFinish:string;
+
+    @Prop()
+    dedicatedTime:string;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);
