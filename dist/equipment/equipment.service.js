@@ -25,20 +25,44 @@ let EquipmentService = class EquipmentService {
         return newEquipment.save();
     }
     async getEquipments() {
-        return await this.equipmentModel.find();
+        try {
+            return await this.equipmentModel.find();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async getEquipment(id) {
-        return await this.equipmentModel.findById(id);
+        try {
+            return await this.equipmentModel.findById(id);
+        }
+        catch (error) {
+            return null;
+        }
     }
     async updateEquipment(id, equipment) {
-        const updatedEquipment = await this.equipmentModel.findByIdAndUpdate(id, equipment, { new: true });
-        return updatedEquipment;
+        try {
+            return await this.equipmentModel.findByIdAndUpdate(id, equipment, { new: true });
+        }
+        catch (error) {
+            return null;
+        }
     }
     async deleteEquipment(id) {
-        return await this.equipmentModel.findByIdAndDelete(id);
+        try {
+            return await this.equipmentModel.findByIdAndDelete(id);
+        }
+        catch (error) {
+            return null;
+        }
     }
     findForCustomer(customerId) {
-        return this.equipmentModel.find({ customer: customerId });
+        try {
+            return this.equipmentModel.find({ customer: customerId });
+        }
+        catch (error) {
+            return null;
+        }
     }
 };
 EquipmentService = __decorate([
