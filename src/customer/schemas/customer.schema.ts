@@ -1,30 +1,33 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
+import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
+dayjs.extend(utc);
 
 export type CustomerDocument = Customer & Document;
 
 @Schema()
 export class Customer {
-    @Prop()
-    name:String;
+    @Prop({required:true})
+    name:string;
 
     @Prop()
-    nit:String;
+    nit:string;
 
     @Prop()
-    direccion:String;
+    direccion:string;
 
-    @Prop()
-    email:String;
+    @Prop({required:true})
+    email:string;
 
     @Prop()
     tel:number;
 
     @Prop()
-    state:Boolean;
+    state:boolean;
 
-    @Prop({type:Date, default:Date.now})
-    createdAt:Date;
+    @Prop({default:dayjs().utc().format()})
+    createdAt:string;
 }
 
 export const CustomerSchema = SchemaFactory.createForClass(Customer);

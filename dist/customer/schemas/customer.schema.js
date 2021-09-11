@@ -11,10 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerSchema = exports.Customer = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+dayjs.extend(utc);
 let Customer = class Customer {
 };
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Customer.prototype, "name", void 0);
 __decorate([
@@ -26,7 +29,7 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "direccion", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Customer.prototype, "email", void 0);
 __decorate([
@@ -38,8 +41,8 @@ __decorate([
     __metadata("design:type", Boolean)
 ], Customer.prototype, "state", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: Date, default: Date.now }),
-    __metadata("design:type", Date)
+    (0, mongoose_1.Prop)({ default: dayjs().utc().format() }),
+    __metadata("design:type", String)
 ], Customer.prototype, "createdAt", void 0);
 Customer = __decorate([
     (0, mongoose_1.Schema)()
