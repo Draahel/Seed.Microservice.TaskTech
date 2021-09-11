@@ -15,19 +15,34 @@ export class CustomerService {
   }
 
   async getCustomers():Promise<Customer[]> {
-    return await this.customerModel.find();
+    try {
+      return await this.customerModel.find();
+    } catch (error) {
+      return null;
+    }
   }
 
   async getCustomer(id: string):Promise<Customer>{
-    return await this.customerModel.findById(id);
+    try {
+      return await this.customerModel.findById(id);
+    } catch (error) {
+      return null;
+    }
   }
 
   async updateCustomer(id: string, customer: UpdateEquipmentDto):Promise<Customer>{
-    const updatedCustomer = await this.customerModel.findByIdAndUpdate(id, customer, {new:true});
-    return updatedCustomer;
+    try {
+      return await this.customerModel.findByIdAndUpdate(id, customer, {new:true});
+    } catch (error) {
+      return null;
+    }
   }
 
   deleteCustomer(id: string) {
-    return this.customerModel.findByIdAndDelete(id);
+    try {
+      return this.customerModel.findByIdAndDelete(id);
+    } catch (error) {
+      return null;
+    }
   }
 }

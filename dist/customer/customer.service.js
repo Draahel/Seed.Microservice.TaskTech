@@ -26,17 +26,36 @@ let CustomerService = class CustomerService {
         return await newCustomer.save();
     }
     async getCustomers() {
-        return await this.customerModel.find();
+        try {
+            return await this.customerModel.find();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async getCustomer(id) {
-        return await this.customerModel.findById(id);
+        try {
+            return await this.customerModel.findById(id);
+        }
+        catch (error) {
+            return null;
+        }
     }
     async updateCustomer(id, customer) {
-        const updatedCustomer = await this.customerModel.findByIdAndUpdate(id, customer, { new: true });
-        return updatedCustomer;
+        try {
+            return await this.customerModel.findByIdAndUpdate(id, customer, { new: true });
+        }
+        catch (error) {
+            return null;
+        }
     }
     deleteCustomer(id) {
-        return this.customerModel.findByIdAndDelete(id);
+        try {
+            return this.customerModel.findByIdAndDelete(id);
+        }
+        catch (error) {
+            return null;
+        }
     }
 };
 CustomerService = __decorate([
