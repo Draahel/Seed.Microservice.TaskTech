@@ -11,34 +11,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EquipmentSchema = exports.Equipment = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
+const dayjs = require("dayjs");
+const utc = require("dayjs/plugin/utc");
+dayjs.extend(utc);
 let Equipment = class Equipment {
 };
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Equipment.prototype, "marca", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Equipment.prototype, "modelo", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", Number)
 ], Equipment.prototype, "numSerie", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Equipment.prototype, "ubicacion", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], Equipment.prototype, "customer", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: Date, default: Date.now }),
-    __metadata("design:type", Date)
+    (0, mongoose_1.Prop)({ default: dayjs().utc().format() }),
+    __metadata("design:type", String)
 ], Equipment.prototype, "createdAt", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: Boolean, default: true }),
+    (0, mongoose_1.Prop)({ default: true }),
     __metadata("design:type", Boolean)
 ], Equipment.prototype, "state", void 0);
 Equipment = __decorate([

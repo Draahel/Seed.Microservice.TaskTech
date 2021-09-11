@@ -1,31 +1,34 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
+import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
+dayjs.extend(utc);
 
 export type EquipmentDocument = Equipment & Document;
 
 @Schema()
 export class Equipment {
 
-    @Prop()
-    marca:String;
+    @Prop({required:true})
+    marca:string;
+
+    @Prop({required:true})
+    modelo:string;
+
+    @Prop({required:true})
+    numSerie:number;
 
     @Prop()
-    modelo:String;
+    ubicacion:string;
 
-    @Prop()
-    numSerie:String;
+    @Prop({required:true})
+    customer:string;
 
-    @Prop()
-    ubicacion:String;
+    @Prop({default:dayjs().utc().format()})
+    createdAt:string;
 
-    @Prop()
-    customer:String;
-
-    @Prop({type:Date, default:Date.now})
-    createdAt:Date;
-
-    @Prop({type:Boolean, default:true})
-    state:Boolean;
+    @Prop({default:true})
+    state:boolean;
 }
 
 export const EquipmentSchema = SchemaFactory.createForClass(Equipment);

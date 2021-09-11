@@ -1,9 +1,9 @@
 export declare class CreateEquipmentDto {
-    marca: String;
-    modelo: String;
-    numSerie: String;
-    ubicacion: String;
-    cliente: String;
-    createdAt: Date;
-    state: Boolean;
+    marca: string;
+    modelo: string;
+    numSerie: number;
+    ubicacion: string;
+    cliente: string;
+    createdAt: string;
+    state: boolean;
 }

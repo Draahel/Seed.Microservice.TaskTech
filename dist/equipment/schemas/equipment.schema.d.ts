@@ -1,12 +1,12 @@
 import { Document } from "mongoose";
 export declare type EquipmentDocument = Equipment & Document;
 export declare class Equipment {
-    marca: String;
-    modelo: String;
-    numSerie: String;
-    ubicacion: String;
-    customer: String;
-    createdAt: Date;
-    state: Boolean;
+    marca: string;
+    modelo: string;
+    numSerie: number;
+    ubicacion: string;
+    customer: string;
+    createdAt: string;
+    state: boolean;
 }
 export declare const EquipmentSchema: import("mongoose").Schema<Document<Equipment, any, any>, import("mongoose").Model<Document<Equipment, any, any>, any, any>, undefined, {}>;

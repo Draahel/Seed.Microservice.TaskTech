@@ -1,5 +1,6 @@
 import { Model } from 'mongoose';
 import { CreateEquipmentDto } from './dto/create-equipment.dto';
+import { UpdateEquipmentDto } from './dto/update-equipment.dto';
 import { Equipment, EquipmentDocument } from './schemas/equipment.schema';
 export declare class EquipmentService {
     private equipmentModel;
@@ -7,7 +8,7 @@ export declare class EquipmentService {
     createEquipment(equipment: CreateEquipmentDto): Promise<Equipment>;
     getEquipments(): Promise<Equipment[]>;
     getEquipment(id: string): Promise<Equipment>;
-    updateEquipment(id: string, equipment: CreateEquipmentDto): Promise<Equipment>;
+    updateEquipment(id: string, equipment: UpdateEquipmentDto): Promise<Equipment>;
     deleteEquipment(id: string): Promise<Equipment>;
     findForCustomer(customerId: any): import("mongoose").Query<EquipmentDocument[], EquipmentDocument, {}, EquipmentDocument>;
 }
