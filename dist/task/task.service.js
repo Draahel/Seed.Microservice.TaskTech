@@ -67,7 +67,7 @@ let TaskService = class TaskService {
         const task = new update_task_dto_1.UpdateTaskDto;
         task.timeFinish = dayjs().utc().format();
         task.state = "Finalizada";
-        const timeFinish = task.timeFinish.toString();
+        const timeFinish = task.timeFinish;
         task.dedicatedTime = (await this.calculateTime(taskId, timeFinish)).toString();
         const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
         return updatedTask;
@@ -75,7 +75,7 @@ let TaskService = class TaskService {
     async calculateTime(taskId, timeFinish) {
         const task = new create_task_dto_1.CreateTaskDto;
         const { timeStart } = await this.taskModel.findById(taskId);
-        const dedicatedTime = dayjs(timeFinish).diff(timeStart.toString(), 'minutes');
+        const dedicatedTime = dayjs(timeFinish).diff(timeStart, 'minutes');
         return dedicatedTime;
     }
     async getByEquipment(equipmentId) {
