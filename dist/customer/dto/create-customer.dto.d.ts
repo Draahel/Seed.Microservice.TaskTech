@@ -5,4 +5,5 @@ export declare class CreateCustomerDto {
     readonly email: string;
     readonly tel: number;
     readonly state: boolean;
+    readonly createAt: string;
 }
