@@ -1,5 +1,6 @@
 import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserDocument } from './schemas/user.schema';
 export declare class UserService {
     private UserModel;
@@ -7,7 +8,7 @@ export declare class UserService {
     createUser(user: CreateUserDto): Promise<User>;
     getUsers(): Promise<User[]>;
     getUser(id: string): Promise<User>;
-    updateUser(id: string, user: CreateUserDto): Promise<User>;
+    updateUser(id: string, user: UpdateUserDto): Promise<User>;
     deleteUser(id: string): Promise<User>;
-    changePassword(id: string, user: CreateUserDto): Promise<UserDocument>;
+    changePassword(id: string, user: UpdateUserDto): Promise<UserDocument>;
 }

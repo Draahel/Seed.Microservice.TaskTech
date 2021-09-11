@@ -8,40 +8,40 @@ export type UserDocument = User & Document;
 @Schema()
 export class User{
     @Prop({required:true})
-    name:String;
+    name:string;
 
     @Prop({required:true})
-    lastname:String;
+    lastname:string;
 
     @Prop({required:true})
-    tipoIdent:String;
+    tipoIdent:string;
 
     @Prop({required:true})
-    nIdent:Number;
+    nIdent:number;
 
     @Prop({required:true})
-    email:String;
-
-    @Prop({required:true})
-    birthday:String;
+    email:string;
 
     @Prop()
-    img:String;
-
-    @Prop({required:true})
-    age:Number;
+    birthday:string;
 
     @Prop()
-    cellphone:Number;
+    img:string;
+
+    @Prop()
+    age:number;
+
+    @Prop()
+    cellphone:number;
 
     @Prop({required:true})
-    password:String;
+    password:string;
 
-    @Prop({type:Boolean, default:true})
-    state:Boolean;
+    @Prop({ default:true })
+    state:boolean;
 
-    @Prop({type:String, default:dayjs().utc().format()})
-    createdAt:String;
+    @Prop({ default:dayjs().utc().format() })
+    createdAt:string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

@@ -37,7 +37,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "email", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], User.prototype, "birthday", void 0);
 __decorate([
@@ -45,7 +45,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "img", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ required: true }),
+    (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
 ], User.prototype, "age", void 0);
 __decorate([
@@ -57,11 +57,11 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: Boolean, default: true }),
+    (0, mongoose_1.Prop)({ default: true }),
     __metadata("design:type", Boolean)
 ], User.prototype, "state", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: String, default: dayjs().utc().format() }),
+    (0, mongoose_1.Prop)({ default: dayjs().utc().format() }),
     __metadata("design:type", String)
 ], User.prototype, "createdAt", void 0);
 User = __decorate([

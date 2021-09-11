@@ -9,47 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserDto = void 0;
+exports.UpdateUserDto = void 0;
 const class_validator_1 = require("class-validator");
-class CreateUserDto {
+class UpdateUserDto {
 }
-__decorate([
-    (0, class_validator_1.IsNotEmpty)({ message: 'Debe ingresar un nombre.' }),
-    (0, class_validator_1.MinLength)(3, { message: 'Ingrese un nombre valido.' }),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)({ message: 'Debe ingresar un apellido.' }),
-    (0, class_validator_1.MinLength)(3, { message: 'Ingrese un apellido valido.' }),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "lastname", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)({ message: 'Selecciona un tipo de identificacion.' }),
-    __metadata("design:type", String)
-], CreateUserDto.prototype, "tipoIdent", void 0);
-__decorate([
-    (0, class_validator_1.IsInt)({ message: 'Numero de identificacion debe ser solo números.' }),
-    (0, class_validator_1.Min)(999999, { message: 'El numero de identifcacion es muy corto.' }),
-    __metadata("design:type", Number)
-], CreateUserDto.prototype, "nIdent", void 0);
 __decorate([
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "email", void 0);
+], UpdateUserDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsInt)({ message: 'edad invalida' }),
     (0, class_validator_1.Min)(15, { message: 'La edad debe ser mayor a 15' }),
     (0, class_validator_1.Max)(99, { message: 'La edad debe ser mejor a 99' }),
     __metadata("design:type", Number)
-], CreateUserDto.prototype, "age", void 0);
+], UpdateUserDto.prototype, "age", void 0);
 __decorate([
     (0, class_validator_1.IsInt)({ message: 'Ingrese un numero de contacto valido' }),
     __metadata("design:type", Number)
-], CreateUserDto.prototype, "cellphone", void 0);
+], UpdateUserDto.prototype, "cellphone", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)({ message: 'Ingrese una contraseña' }),
     (0, class_validator_1.Length)(8, 18, { message: 'La contraseña debe tener de 8 a 18 caracteres' }),
     __metadata("design:type", String)
-], CreateUserDto.prototype, "password", void 0);
-exports.CreateUserDto = CreateUserDto;
-//# sourceMappingURL=create-user.dto.js.map
+], UpdateUserDto.prototype, "password", void 0);
+exports.UpdateUserDto = UpdateUserDto;
+//# sourceMappingURL=update-user.dto.js.map
