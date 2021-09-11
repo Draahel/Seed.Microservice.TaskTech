@@ -25,21 +25,44 @@ let UserService = class UserService {
         return await newUser.save();
     }
     async getUsers() {
-        return await this.UserModel.find();
+        try {
+            return await this.UserModel.find().exec();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async getUser(id) {
-        return await this.UserModel.findById(id);
+        try {
+            return await this.UserModel.findById(id).exec();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async updateUser(id, user) {
-        const updatedUser = await this.UserModel.findByIdAndUpdate(id, user, { new: true });
-        return updatedUser;
+        try {
+            return await this.UserModel.findByIdAndUpdate(id, user, { new: true }).exec();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async deleteUser(id) {
-        return await this.UserModel.findByIdAndDelete(id);
+        try {
+            return await this.UserModel.findByIdAndDelete(id).exec();
+        }
+        catch (error) {
+            return null;
+        }
     }
     async changePassword(id, user) {
-        const updatedPass = await this.UserModel.findByIdAndUpdate(id, user, { new: true });
-        return updatedPass;
+        try {
+            return await this.UserModel.findByIdAndUpdate(id, user, { new: true }).exec();
+        }
+        catch (error) {
+            return null;
+        }
     }
 };
 UserService = __decorate([

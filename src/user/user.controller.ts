@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
   Post,
   Put,
@@ -28,7 +30,11 @@ export class UserController {
 
   @Get('get-user-by-id/:id')
   async getUser(@Param('id') id: string): Promise<User> {
-    return await this.userService.getUser(id);
+    const res = await this.userService.getUser(id);
+    if(res == null){
+      throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
+    }
+    return res;
   }
 
   @Put('update-user/:id')
@@ -36,16 +42,28 @@ export class UserController {
     @Param('id') id: string,
     @Body() user: UpdateUserDto,
   ): Promise<User> {
-    return await this.userService.updateUser(id, user);
+    const res = await this.userService.updateUser(id, user);
+    if(res == null){
+      throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
+    }
+    return res;
   }
 
   @Put('change-password/:id')
   async changePassword(@Param('id') id, @Body() user:UpdateUserDto):Promise<User>{
-    return await this.userService.changePassword(id, user);
+    const res = await this.userService.changePassword(id, user);
+    if(res == null){
+      throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
+    }
+    return res;
   }
 
   @Delete('delete-user/:id')
   async deleteUser(@Param('id') id: string) {
-    return await this.userService.deleteUser(id);
+    const res = await this.userService.deleteUser(id);
+    if(res == null){
+      throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
+    }
+    return res;
   }
 }

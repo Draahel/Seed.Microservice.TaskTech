@@ -28,16 +28,32 @@ let UserController = class UserController {
         return await this.userService.getUsers();
     }
     async getUser(id) {
-        return await this.userService.getUser(id);
+        const res = await this.userService.getUser(id);
+        if (res == null) {
+            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
     async updateUser(id, user) {
-        return await this.userService.updateUser(id, user);
+        const res = await this.userService.updateUser(id, user);
+        if (res == null) {
+            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
     async changePassword(id, user) {
-        return await this.userService.changePassword(id, user);
+        const res = await this.userService.changePassword(id, user);
+        if (res == null) {
+            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
     async deleteUser(id) {
-        return await this.userService.deleteUser(id);
+        const res = await this.userService.deleteUser(id);
+        if (res == null) {
+            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
 };
 __decorate([
