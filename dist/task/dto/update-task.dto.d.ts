@@ -1,12 +1,5 @@
-export declare class UpdateTaskDto {
-    name: String;
-    equipment: String;
-    assignedTo: String[];
-    description: String;
-    timeStart: String;
-    timeFinish: String;
-    dedicatedTime: String;
-    observatio: String;
-    state: String;
-    createdAt: String;
+import { CreateTaskDto } from './create-task.dto';
+declare const UpdateTaskDto_base: import("@nestjs/mapped-types").MappedType<Partial<CreateTaskDto>>;
+export declare class UpdateTaskDto extends UpdateTaskDto_base {
 }
+export {};

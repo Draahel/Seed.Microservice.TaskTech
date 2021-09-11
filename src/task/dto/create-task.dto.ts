@@ -15,15 +15,15 @@ export class CreateTaskDto{
     @MinLength(15,{message:"La descripcion debe tener minimo 15 caracteres."})
     readonly description:String;
 
-    readonly timeStart:String;
+    timeStart:String;
 
-    readonly timeFinish:String;
+    timeFinish:String;
 
-    readonly dedicatedTime:String;
+    dedicatedTime:String;
 
     readonly observatio:String;
 
-    readonly state:String;
+    state:String;
 
     readonly createdAt:String;
 }

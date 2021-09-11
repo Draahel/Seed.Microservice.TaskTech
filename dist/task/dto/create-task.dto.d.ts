@@ -3,10 +3,10 @@ export declare class CreateTaskDto {
     readonly equipment: String;
     readonly assignedTo: String[];
     readonly description: String;
-    readonly timeStart: String;
-    readonly timeFinish: String;
-    readonly dedicatedTime: String;
+    timeStart: String;
+    timeFinish: String;
+    dedicatedTime: String;
     readonly observatio: String;
-    readonly state: String;
+    state: String;
     readonly createdAt: String;
 }
