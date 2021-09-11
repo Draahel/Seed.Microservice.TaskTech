@@ -27,13 +27,25 @@ let EquipmentController = class EquipmentController {
         return await this.equipmentService.getEquipments();
     }
     async getEquipment(id) {
-        return await this.equipmentService.getEquipment(id);
+        const res = await this.equipmentService.getEquipment(id);
+        if (res == null) {
+            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
     async updateEquipment(id, equipment) {
-        return await this.equipmentService.updateEquipment(id, equipment);
+        const res = await this.equipmentService.updateEquipment(id, equipment);
+        if (res == null) {
+            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
     async deleteEquipment(id) {
-        return await this.equipmentService.deleteEquipment(id);
+        const res = await this.equipmentService.deleteEquipment(id);
+        if (res == null) {
+            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+        }
+        return res;
     }
 };
 __decorate([
