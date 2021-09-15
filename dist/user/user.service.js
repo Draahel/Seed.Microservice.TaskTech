@@ -16,6 +16,7 @@ exports.UserService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const bcrypt = require("bcrypt");
 let UserService = class UserService {
     constructor(UserModel) {
         this.UserModel = UserModel;
@@ -55,6 +56,9 @@ let UserService = class UserService {
         catch (error) {
             return null;
         }
+    }
+    async beforeCreate(user) {
+        return await bcrypt.hash(user.password, 10);
     }
     async changePassword(id, user) {
         try {

@@ -22,6 +22,7 @@ let UserController = class UserController {
         this.userService = userService;
     }
     async createUser(user) {
+        user.password = await this.userService.beforeCreate(user);
         return await this.userService.createUser(user);
     }
     async getUsers() {

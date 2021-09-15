@@ -34,7 +34,7 @@ export class CreateUserDto {
 
   @IsNotEmpty({ message: 'Ingrese una contraseña' })
   @Length(8, 18, { message: 'La contraseña debe tener de 8 a 18 caracteres' })
-  readonly password: string;
+  password: string;
 
   readonly state: boolean;
 

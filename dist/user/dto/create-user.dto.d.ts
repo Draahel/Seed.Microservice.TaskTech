@@ -8,7 +8,7 @@ export declare class CreateUserDto {
     readonly email: string;
     readonly age: number;
     readonly cellphone: number;
-    readonly password: string;
+    password: string;
     readonly state: boolean;
     readonly createdAt: string;
 }

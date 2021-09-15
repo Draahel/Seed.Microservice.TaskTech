@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserDocument } from './schemas/user.schema';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -47,11 +48,15 @@ export class UserService {
     }
   }
 
+  async beforeCreate(user):Promise<string>{
+    return await bcrypt.hash(user.password, 10);
+  }
+
   async changePassword(id:string,user:UpdateUserDto){
     try {
       return await this.UserModel.findByIdAndUpdate(id, user,{new:true}).exec();
     } catch (error) {
-     return null; 
+     return null;
     }
   }
 

@@ -20,6 +20,7 @@ export class UserController {
 
   @Post('create-user')
   async createUser(@Body() user: CreateUserDto): Promise<User> {
+    user.password = await this.userService.beforeCreate(user);
     return await this.userService.createUser(user);
   }
 
