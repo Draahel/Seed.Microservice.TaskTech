@@ -12,7 +12,6 @@ dayjs.extend(utc);
 export class TaskService {
     constructor(@InjectModel('Task') private taskModel:Model<TaskDocument>){}
 
-    
     // Obtener una tarea por id
     async getTask(taskId):Promise<Task>{
         try {
@@ -20,9 +19,7 @@ export class TaskService {
         } catch (error) {
             return null;
         }
-        
     }
-
     // Listar todas las tareas
     async getTasks():Promise<Task[]>{
         try {
@@ -30,15 +27,12 @@ export class TaskService {
         } catch (error) {
             return null;
         }
-        
     }
-
     // Crear una tarea
     async createTask(task:CreateTaskDto):Promise<Task>{
         const newTask = new this.taskModel(task);
         return await newTask.save();
     }
-
     // Actualizar una tarea
     async updateTask(taskId:String , task:UpdateTaskDto):Promise<Task>{
         try {
@@ -47,44 +41,13 @@ export class TaskService {
             return null;
         }
     }
-
     // Eliminar una tarea
     async deleteTask(taskId):Promise<Task>{
         return await this.taskModel.findByIdAndDelete(taskId);
     }
-
-    //Iniciar tarea
-    async startTask(taskId:string):Promise<Task>{
-        const task = new UpdateTaskDto;
-        task.timeStart = dayjs().utc().format();
-        task.state = "En proceso";
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
-        return updatedTask;
-    }
-
-    //Finalizar tarea
-    async finishTask(taskId:string):Promise<Task>{
-        const task = new UpdateTaskDto;
-        task.timeFinish = dayjs().utc().format();
-        task.state = "Finalizada";
-        const timeFinish = task.timeFinish;
-        task.dedicatedTime = (await this.calculateTime(taskId,timeFinish)).toString();
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, {new: true});
-        return updatedTask; 
-    }
-
-    // Calcular tiempo del desarrollo de la tarea
-    async calculateTime(taskId: string,timeFinish:string):Promise<number> {
-        const task = new CreateTaskDto;
-        const { timeStart } = await this.taskModel.findById(taskId);
-        const dedicatedTime=dayjs(timeFinish).diff(timeStart,'minutes');
-        return dedicatedTime;
-    }
-
     async getByEquipment(equipmentId): Promise<Task[]>{
         return await this.taskModel.find({equipment:equipmentId}).exec();
     }
-
     async getByUser(userId):Promise<Task[]>{
         const tasks = await this.taskModel.find({assignedTo:userId}).exec();
         return tasks;

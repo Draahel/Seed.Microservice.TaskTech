@@ -10,9 +10,6 @@ export declare class TaskService {
     createTask(task: CreateTaskDto): Promise<Task>;
     updateTask(taskId: String, task: UpdateTaskDto): Promise<Task>;
     deleteTask(taskId: any): Promise<Task>;
-    startTask(taskId: string): Promise<Task>;
-    finishTask(taskId: string): Promise<Task>;
-    calculateTime(taskId: string, timeFinish: string): Promise<number>;
     getByEquipment(equipmentId: any): Promise<Task[]>;
     getByUser(userId: any): Promise<Task[]>;
 }

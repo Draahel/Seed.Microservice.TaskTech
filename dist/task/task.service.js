@@ -16,10 +16,8 @@ exports.TaskService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-const create_task_dto_1 = require("./dto/create-task.dto");
 const dayjs = require("dayjs");
 const utc = require("dayjs/plugin/utc");
-const update_task_dto_1 = require("./dto/update-task.dto");
 dayjs.extend(utc);
 let TaskService = class TaskService {
     constructor(taskModel) {
@@ -55,28 +53,6 @@ let TaskService = class TaskService {
     }
     async deleteTask(taskId) {
         return await this.taskModel.findByIdAndDelete(taskId);
-    }
-    async startTask(taskId) {
-        const task = new update_task_dto_1.UpdateTaskDto;
-        task.timeStart = dayjs().utc().format();
-        task.state = "En proceso";
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
-        return updatedTask;
-    }
-    async finishTask(taskId) {
-        const task = new update_task_dto_1.UpdateTaskDto;
-        task.timeFinish = dayjs().utc().format();
-        task.state = "Finalizada";
-        const timeFinish = task.timeFinish;
-        task.dedicatedTime = (await this.calculateTime(taskId, timeFinish)).toString();
-        const updatedTask = await this.taskModel.findByIdAndUpdate(taskId, task, { new: true });
-        return updatedTask;
-    }
-    async calculateTime(taskId, timeFinish) {
-        const task = new create_task_dto_1.CreateTaskDto;
-        const { timeStart } = await this.taskModel.findById(taskId);
-        const dedicatedTime = dayjs(timeFinish).diff(timeStart, 'minutes');
-        return dedicatedTime;
     }
     async getByEquipment(equipmentId) {
         return await this.taskModel.find({ equipment: equipmentId }).exec();

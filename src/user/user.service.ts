@@ -51,13 +51,4 @@ export class UserService {
   async beforeCreate(user):Promise<string>{
     return await bcrypt.hash(user.password, 10);
   }
-
-  async changePassword(id:string,user:UpdateUserDto){
-    try {
-      return await this.UserModel.findByIdAndUpdate(id, user,{new:true}).exec();
-    } catch (error) {
-     return null;
-    }
-  }
-
 }

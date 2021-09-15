@@ -49,27 +49,27 @@ let EquipmentController = class EquipmentController {
     }
 };
 __decorate([
-    (0, common_1.Post)('create-equipment'),
+    (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_equipment_dto_1.CreateEquipmentDto]),
     __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "createEquipment", null);
 __decorate([
-    (0, common_1.Get)('get-all-equipments'),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "getEquipments", null);
 __decorate([
-    (0, common_1.Get)('get-equipment-by-id/:id'),
+    (0, common_1.Get)('equipment/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "getEquipment", null);
 __decorate([
-    (0, common_1.Put)('update-equipment/:id'),
+    (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -77,14 +77,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "updateEquipment", null);
 __decorate([
-    (0, common_1.Delete)('delete-equipment/:id'),
+    (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], EquipmentController.prototype, "deleteEquipment", null);
 EquipmentController = __decorate([
-    (0, common_1.Controller)('api/equipment'),
+    (0, common_1.Controller)('api/equipments'),
     __metadata("design:paramtypes", [equipment_service_1.EquipmentService])
 ], EquipmentController);
 exports.EquipmentController = EquipmentController;

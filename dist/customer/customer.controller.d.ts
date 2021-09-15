@@ -9,5 +9,5 @@ export declare class CustomerController {
     getCustomers(): Promise<Customer[]>;
     getCustomer(id: string): Promise<Customer>;
     updateCustomer(id: string, customer: UpdateEquipmentDto): Promise<Customer>;
-    deleteCustomer(id: string): Promise<import("./schemas/customer.schema").CustomerDocument>;
+    deleteCustomer(id: string): Promise<Customer>;
 }

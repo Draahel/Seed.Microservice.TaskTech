@@ -43,47 +43,41 @@ let TaskController = class TaskController {
     async getByUser(userId) {
         return this.taskService.getByUser(userId);
     }
-    async startTask(taskId) {
-        return await this.taskService.startTask(taskId);
-    }
-    async finishTask(taskId) {
-        return await this.taskService.finishTask(taskId);
-    }
 };
 __decorate([
-    (0, common_1.Get)('get-task-by-id/:taskId'),
+    (0, common_1.Get)('task/:taskId'),
     __param(0, (0, common_1.Param)('taskId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], TaskController.prototype, "getTask", null);
 __decorate([
-    (0, common_1.Get)('get-all-tasks'),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], TaskController.prototype, "getTasks", null);
 __decorate([
-    (0, common_1.Post)('create-task'),
+    (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_task_dto_1.CreateTaskDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TaskController.prototype, "createTask", null);
 __decorate([
-    (0, common_1.Put)('update-task/:taskId'),
+    (0, common_1.Put)(':taskId'),
     __param(0, (0, common_1.Param)('taskId')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_task_dto_1.UpdateTaskDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TaskController.prototype, "updateTask", null);
 __decorate([
-    (0, common_1.Delete)('delete-task/:taskId'),
+    (0, common_1.Delete)(':taskId'),
     __param(0, (0, common_1.Param)('taskId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], TaskController.prototype, "deteleTask", null);
 __decorate([
     (0, common_1.Get)('get-tasks-by-user-id/:userId'),
@@ -92,22 +86,8 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], TaskController.prototype, "getByUser", null);
-__decorate([
-    (0, common_1.Put)('start-task/:taskId'),
-    __param(0, (0, common_1.Param)('taskId')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], TaskController.prototype, "startTask", null);
-__decorate([
-    (0, common_1.Put)('finish-task/:taskId'),
-    __param(0, (0, common_1.Param)('taskId')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], TaskController.prototype, "finishTask", null);
 TaskController = __decorate([
-    (0, common_1.Controller)('api/task'),
+    (0, common_1.Controller)('api/tasks'),
     __metadata("design:paramtypes", [task_service_1.TaskService])
 ], TaskController);
 exports.TaskController = TaskController;

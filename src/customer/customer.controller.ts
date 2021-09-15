@@ -4,21 +4,21 @@ import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { Customer } from './schemas/customer.schema';
 
-@Controller('api/customer')
+@Controller('api/customers')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
 
-  @Post('create-customer')
+  @Post()
   async createCustomer(@Body() customer: CreateCustomerDto):Promise<Customer> {
     return await this.customerService.createCustomer(customer);
   }
 
-  @Get('get-all-customers')
+  @Get()
   async getCustomers():Promise<Customer[]>{
     return await this.customerService.getCustomers();
   }
 
-  @Get('get-customer-by-id/:id')
+  @Get('customer/:id')
   async getCustomer(@Param('id') id:string):Promise<Customer>{
     const res = await this.customerService.getCustomer(id);
     if (res == null) {
@@ -27,7 +27,7 @@ export class CustomerController {
     return res;
   }
 
-  @Put('update-customer/:id')
+  @Put(':id')
   async updateCustomer(@Param('id') id: string, @Body() customer: UpdateEquipmentDto):Promise<Customer>{
     const res = await this.customerService.updateCustomer(id, customer);
     if (res == null) {
@@ -36,8 +36,8 @@ export class CustomerController {
     return res;
   }
 
-  @Delete('delete-customer/:id')
-  async deleteCustomer(@Param('id') id: string) {
+  @Delete(':id')
+  async deleteCustomer(@Param('id') id: string):Promise<Customer>{
     const res = await this.customerService.deleteCustomer(id);
     if (res == null) {
       throw new HttpException('No se pudo encontrar el cliente', HttpStatus.NOT_FOUND);

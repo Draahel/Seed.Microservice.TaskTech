@@ -14,22 +14,22 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.schema';
 import { UserService } from './user.service';
 
-@Controller('api/user')
+@Controller('api/users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post('create-user')
+  @Post()
   async createUser(@Body() user: CreateUserDto): Promise<User> {
     user.password = await this.userService.beforeCreate(user);
     return await this.userService.createUser(user);
   }
 
-  @Get('get-all-users')
+  @Get()
   async getUsers(): Promise<User[]> {
     return await this.userService.getUsers();
   }
 
-  @Get('get-user-by-id/:id')
+  @Get('user/:id')
   async getUser(@Param('id') id: string): Promise<User> {
     const res = await this.userService.getUser(id);
     if(res == null){
@@ -38,11 +38,9 @@ export class UserController {
     return res;
   }
 
-  @Put('update-user/:id')
+  @Put(':id')
   async updateUser(
-    @Param('id') id: string,
-    @Body() user: UpdateUserDto,
-  ): Promise<User> {
+    @Param('id') id: string,@Body() user: UpdateUserDto,): Promise<User> {
     const res = await this.userService.updateUser(id, user);
     if(res == null){
       throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
@@ -50,16 +48,7 @@ export class UserController {
     return res;
   }
 
-  @Put('change-password/:id')
-  async changePassword(@Param('id') id, @Body() user:UpdateUserDto):Promise<User>{
-    const res = await this.userService.changePassword(id, user);
-    if(res == null){
-      throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
-    }
-    return res;
-  }
-
-  @Delete('delete-user/:id')
+  @Delete(':id')
   async deleteUser(@Param('id') id: string) {
     const res = await this.userService.deleteUser(id);
     if(res == null){

@@ -11,5 +11,4 @@ export declare class UserService {
     updateUser(id: string, user: UpdateUserDto): Promise<User>;
     deleteUser(id: string): Promise<User>;
     beforeCreate(user: any): Promise<string>;
-    changePassword(id: string, user: UpdateUserDto): Promise<UserDocument>;
 }

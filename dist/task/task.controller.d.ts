@@ -11,6 +11,4 @@ export declare class TaskController {
     updateTask(taskId: String, task: UpdateTaskDto): Promise<Task>;
     deteleTask(taskId: any): Promise<Task>;
     getByUser(userId: string): Promise<Task[]>;
-    startTask(taskId: any): Promise<Task>;
-    finishTask(taskId: string): Promise<Task>;
 }

@@ -42,13 +42,6 @@ let UserController = class UserController {
         }
         return res;
     }
-    async changePassword(id, user) {
-        const res = await this.userService.changePassword(id, user);
-        if (res == null) {
-            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
-        }
-        return res;
-    }
     async deleteUser(id) {
         const res = await this.userService.deleteUser(id);
         if (res == null) {
@@ -58,27 +51,27 @@ let UserController = class UserController {
     }
 };
 __decorate([
-    (0, common_1.Post)('create-user'),
+    (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "createUser", null);
 __decorate([
-    (0, common_1.Get)('get-all-users'),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUsers", null);
 __decorate([
-    (0, common_1.Get)('get-user-by-id/:id'),
+    (0, common_1.Get)('user/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getUser", null);
 __decorate([
-    (0, common_1.Put)('update-user/:id'),
+    (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -86,22 +79,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "updateUser", null);
 __decorate([
-    (0, common_1.Put)('change-password/:id'),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, update_user_dto_1.UpdateUserDto]),
-    __metadata("design:returntype", Promise)
-], UserController.prototype, "changePassword", null);
-__decorate([
-    (0, common_1.Delete)('delete-user/:id'),
+    (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "deleteUser", null);
 UserController = __decorate([
-    (0, common_1.Controller)('api/user'),
+    (0, common_1.Controller)('api/users'),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);
 exports.UserController = UserController;
