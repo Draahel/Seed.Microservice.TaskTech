@@ -15,11 +15,12 @@ const task_module_1 = require("./task/task.module");
 const user_module_1 = require("./user/user.module");
 const customer_module_1 = require("./customer/customer.module");
 const equipment_module_1 = require("./equipment/equipment.module");
+const url = process.env.MONGO_URL || 'host.docker.internal:27017';
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/taskTechDB', { useFindAndModify: false }), task_module_1.TaskModule, user_module_1.UserModule, customer_module_1.CustomerModule, equipment_module_1.EquipmentModule],
+        imports: [mongoose_1.MongooseModule.forRoot(`mongodb://${url}/taskTechDB`, { useFindAndModify: false, useNewUrlParser: true }), task_module_1.TaskModule, user_module_1.UserModule, customer_module_1.CustomerModule, equipment_module_1.EquipmentModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
