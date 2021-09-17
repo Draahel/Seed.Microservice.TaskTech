@@ -15,7 +15,7 @@ const task_module_1 = require("./task/task.module");
 const user_module_1 = require("./user/user.module");
 const customer_module_1 = require("./customer/customer.module");
 const equipment_module_1 = require("./equipment/equipment.module");
-const url = process.env.MONGO_URL || 'host.docker.internal:27017';
+const url = process.env.MONGO_URL || 'localhost:27017';
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
