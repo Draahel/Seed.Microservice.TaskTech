@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /usr/src/app
+WORKDIR /usr
 
 COPY package*.json ./
 
@@ -10,4 +10,8 @@ COPY . .
 
 EXPOSE 3000
 
-RUN [ "node", "dist/main" ]
+RUN [ "npm", "run" , "build" ]
+
+# RUN [ "npm", "run", "start:dev" ]
+
+RUN [ "node", "dist/main.js" ]

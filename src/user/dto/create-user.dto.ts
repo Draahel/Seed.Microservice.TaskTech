@@ -1,4 +1,6 @@
 import { IsEmail, IsInt, IsNotEmpty, Length, Max, Min, MinLength } from 'class-validator';
+// import { IsUserAlreadyExist } from 'src/pipes/UserAlreadyExist.pipe';
+
 export class CreateUserDto {
 
   @IsNotEmpty({ message: 'Debe ingresar un nombre.' })
@@ -21,6 +23,7 @@ export class CreateUserDto {
 
   readonly img: string;
 
+  // @IsUserAlreadyExist({ message: "El correo ya existe" })
   @IsEmail()
   readonly email: string;
 

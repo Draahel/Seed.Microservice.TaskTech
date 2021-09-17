@@ -8,6 +8,7 @@ import { CustomerModule } from './customer/customer.module';
 import { EquipmentModule } from './equipment/equipment.module';
 
 const url = process.env.MONGO_URL || 'host.docker.internal:27017';
+// const url = process.env.MONGO_URL || 'localhost:27017';
 
 @Module({
   imports: [MongooseModule.forRoot(`mongodb://${url}/taskTechDB`,{useFindAndModify:false, useNewUrlParser:true}),TaskModule, UserModule, CustomerModule, EquipmentModule],
