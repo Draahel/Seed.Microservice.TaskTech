@@ -23,6 +23,7 @@ __decorate([
     __metadata("design:type", Number)
 ], CreateCustomerDto.prototype, "nit", void 0);
 __decorate([
+    (0, class_validator_1.IsEmail)(),
     (0, class_validator_1.IsNotEmpty)({ message: 'El e-mail es necesario' }),
     __metadata("design:type", String)
 ], CreateCustomerDto.prototype, "email", void 0);

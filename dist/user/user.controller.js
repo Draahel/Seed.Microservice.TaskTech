@@ -31,7 +31,7 @@ let UserController = class UserController {
     async getUser(id) {
         const res = await this.userService.getUser(id);
         if (res == null) {
-            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+            throw new common_1.HttpException('Usuario no encontrado', common_1.HttpStatus.NOT_FOUND);
         }
         return res;
     }

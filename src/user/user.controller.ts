@@ -33,7 +33,7 @@ export class UserController {
   async getUser(@Param('id') id: string): Promise<User> {
     const res = await this.userService.getUser(id);
     if(res == null){
-      throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
+      throw new HttpException('Usuario no encontrado', HttpStatus.NOT_FOUND);
     }
     return res;
   }

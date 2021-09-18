@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsString } from "class-validator";
+import { IsEmail, IsInt, IsNotEmpty, IsString } from "class-validator";
 
 export class CreateCustomerDto {
 
@@ -12,6 +12,7 @@ export class CreateCustomerDto {
 
     readonly direccion:string;
     
+    @IsEmail()
     @IsNotEmpty({ message: 'El e-mail es necesario' })
     readonly email:string;
     

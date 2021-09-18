@@ -23,7 +23,6 @@ export class CreateUserDto {
 
   readonly img: string;
 
-  // @IsUserAlreadyExist({ message: "El correo ya existe" })
   @IsEmail()
   readonly email: string;
 
