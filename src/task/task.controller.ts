@@ -36,7 +36,7 @@ export class TaskController {
     deteleTask(@Param('taskId') taskId):Promise<Task>{
         return this.taskService.deleteTask(taskId);
     }
-    @Get('get-tasks-by-user-id/:userId')
+    @Get('by-user/:userId')
     async getByUser(@Param('userId') userId:string):Promise<Task[]>{
         return this.taskService.getByUser(userId);
     }

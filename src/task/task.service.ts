@@ -49,6 +49,7 @@ export class TaskService {
         return await this.taskModel.find({equipment:equipmentId}).exec();
     }
     async getByUser(userId):Promise<Task[]>{
+        console.log(typeof userId);
         const tasks = await this.taskModel.find({assignedTo:userId}).exec();
         return tasks;
     }

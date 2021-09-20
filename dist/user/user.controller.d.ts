@@ -10,4 +10,5 @@ export declare class UserController {
     getUser(id: string): Promise<User>;
     updateUser(id: string, user: UpdateUserDto): Promise<User>;
     deleteUser(id: string): Promise<User>;
+    byEmail(userEmail: any): Promise<User>;
 }

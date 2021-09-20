@@ -43,7 +43,7 @@ export class UserController {
     @Param('id') id: string,@Body() user: UpdateUserDto,): Promise<User> {
     const res = await this.userService.updateUser(id, user);
     if(res == null){
-      throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
+      throw new HttpException('Usuario no encontrado', HttpStatus.NOT_FOUND);
     }
     return res;
   }
@@ -52,8 +52,14 @@ export class UserController {
   async deleteUser(@Param('id') id: string) {
     const res = await this.userService.deleteUser(id);
     if(res == null){
-      throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND);
+      throw new HttpException('Usuario no encontrado', HttpStatus.NOT_FOUND);
     }
     return res;
+  }
+
+  @Post('prueba')
+  async byEmail(@Body() userEmail):Promise<User>{
+    const { email } = userEmail;
+    return await this.userService.findByEmail(email);
   }
 }

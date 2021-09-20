@@ -80,7 +80,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], TaskController.prototype, "deteleTask", null);
 __decorate([
-    (0, common_1.Get)('get-tasks-by-user-id/:userId'),
+    (0, common_1.Get)('by-user/:userId'),
     __param(0, (0, common_1.Param)('userId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

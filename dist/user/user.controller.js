@@ -38,16 +38,20 @@ let UserController = class UserController {
     async updateUser(id, user) {
         const res = await this.userService.updateUser(id, user);
         if (res == null) {
-            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+            throw new common_1.HttpException('Usuario no encontrado', common_1.HttpStatus.NOT_FOUND);
         }
         return res;
     }
     async deleteUser(id) {
         const res = await this.userService.deleteUser(id);
         if (res == null) {
-            throw new common_1.HttpException('Producto no encontrado', common_1.HttpStatus.NOT_FOUND);
+            throw new common_1.HttpException('Usuario no encontrado', common_1.HttpStatus.NOT_FOUND);
         }
         return res;
+    }
+    async byEmail(userEmail) {
+        const { email } = userEmail;
+        return await this.userService.findByEmail(email);
     }
 };
 __decorate([
@@ -85,6 +89,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "deleteUser", null);
+__decorate([
+    (0, common_1.Post)('prueba'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "byEmail", null);
 UserController = __decorate([
     (0, common_1.Controller)('api/users'),
     __metadata("design:paramtypes", [user_service_1.UserService])

@@ -60,6 +60,9 @@ let UserService = class UserService {
     async beforeCreate(user) {
         return await bcrypt.hash(user.password, 10);
     }
+    async findByEmail(email) {
+        return await this.UserModel.findOne({ email }).exec();
+    }
 };
 UserService = __decorate([
     (0, common_1.Injectable)(),

@@ -58,6 +58,7 @@ let TaskService = class TaskService {
         return await this.taskModel.find({ equipment: equipmentId }).exec();
     }
     async getByUser(userId) {
+        console.log(typeof userId);
         const tasks = await this.taskModel.find({ assignedTo: userId }).exec();
         return tasks;
     }
