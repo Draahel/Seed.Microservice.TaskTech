@@ -22,6 +22,10 @@ let UserService = class UserService {
         this.UserModel = UserModel;
     }
     async createUser(user) {
+        const userExist = await this.UserModel.findOne({ email: user.email });
+        if (userExist) {
+            throw new common_1.BadRequestException('Ya existe un usuario con este correo electronico');
+        }
         const newUser = new this.UserModel(user);
         return await newUser.save();
     }
