@@ -15,12 +15,12 @@ const user_module_1 = require("./user/user.module");
 const customer_module_1 = require("./customer/customer.module");
 const equipment_module_1 = require("./equipment/equipment.module");
 const auth_module_1 = require("./auth/auth.module");
-const url = process.env.MONGO_URL || 'localhost:27017';
+const url = 'mongodb+srv://userAdmin:xggkgoqAc9ktxxi4@cluster0.2hkh5.mongodb.net/taskTechDB?retryWrites=true&w=majority';
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forRoot(`mongodb://${url}/taskTechDB`, { useFindAndModify: false, useNewUrlParser: true }), task_module_1.TaskModule, user_module_1.UserModule, customer_module_1.CustomerModule, equipment_module_1.EquipmentModule, auth_module_1.AuthModule],
+        imports: [mongoose_1.MongooseModule.forRoot(url, { useFindAndModify: false, useNewUrlParser: true }), task_module_1.TaskModule, user_module_1.UserModule, customer_module_1.CustomerModule, equipment_module_1.EquipmentModule, auth_module_1.AuthModule],
         controllers: [app_controller_1.AppController],
     })
 ], AppModule);
