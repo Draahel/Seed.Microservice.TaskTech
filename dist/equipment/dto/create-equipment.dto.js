@@ -10,25 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateEquipmentDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateEquipmentDto {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)({ message: 'Debe tener una marca.' }),
     (0, class_validator_1.IsString)({ message: 'La marca no es valida.' }),
     __metadata("design:type", String)
 ], CreateEquipmentDto.prototype, "marca", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)({ message: 'Debe tener un modelo.' }),
     (0, class_validator_1.IsString)({ message: 'El modelo no es valido.' }),
     __metadata("design:type", String)
 ], CreateEquipmentDto.prototype, "modelo", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)({ message: 'Debe tener un numero de serie.' }),
     (0, class_validator_1.IsInt)({ message: 'El numero de serie no es valido.' }),
     __metadata("design:type", Number)
 ], CreateEquipmentDto.prototype, "numSerie", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)(),
+    __metadata("design:type", String)
+], CreateEquipmentDto.prototype, "ubicacion", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)({ message: 'Debe pertenecer a un cliente.' }),
     (0, class_validator_1.IsString)({ message: 'Asigne un cliente.' }),
     __metadata("design:type", String)

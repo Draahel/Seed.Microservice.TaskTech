@@ -10,19 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateTaskDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateTaskDto {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)({ message: "La tarea debe tener un titulo." }),
     __metadata("design:type", String)
 ], CreateTaskDto.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)({ message: "Debe asignarle un equipo a esta tarea." }),
     __metadata("design:type", String)
 ], CreateTaskDto.prototype, "equipment", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", Array)
+], CreateTaskDto.prototype, "assignedTo", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)({ message: "Debe tener una descripcion." }),
     (0, class_validator_1.MinLength)(15, { message: "La descripcion debe tener minimo 15 caracteres." }),
     __metadata("design:type", String)

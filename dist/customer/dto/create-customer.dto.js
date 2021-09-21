@@ -10,24 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateCustomerDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateCustomerDto {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsNotEmpty)({ message: 'Debe asginar un nombre' }),
     (0, class_validator_1.IsString)({ message: 'Ingrese un nombre valido' }),
     __metadata("design:type", String)
 ], CreateCustomerDto.prototype, "name", void 0);
 __decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsInt)({ message: 'Ingrese un NIT valido' }),
     __metadata("design:type", Number)
 ], CreateCustomerDto.prototype, "nit", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)(),
+    __metadata("design:type", String)
+], CreateCustomerDto.prototype, "direccion", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
     (0, class_validator_1.IsEmail)(),
     (0, class_validator_1.IsNotEmpty)({ message: 'El e-mail es necesario' }),
     __metadata("design:type", String)
 ], CreateCustomerDto.prototype, "email", void 0);
 __decorate([
+    (0, swagger_1.ApiPropertyOptional)(),
     (0, class_validator_1.IsInt)({ message: 'Debe ingresar un telefono valido' }),
     __metadata("design:type", Number)
 ], CreateCustomerDto.prototype, "tel", void 0);
