@@ -7,11 +7,10 @@ import { CustomerModule } from './customer/customer.module';
 import { EquipmentModule } from './equipment/equipment.module';
 import { AuthModule } from './auth/auth.module';
 
-// const url = process.env.MONGO_URL || 'host.docker.internal:27017';
-const url = process.env.MONGO_URL || 'localhost:27017';
+const url = 'mongodb+srv://userAdmin:xggkgoqAc9ktxxi4@cluster0.2hkh5.mongodb.net/taskTechDB?retryWrites=true&w=majority';
 
 @Module({
-  imports: [MongooseModule.forRoot(`mongodb://${url}/taskTechDB`,{useFindAndModify:false, useNewUrlParser:true}),TaskModule, UserModule, CustomerModule, EquipmentModule, AuthModule],
+  imports: [MongooseModule.forRoot(url,{useFindAndModify:false, useNewUrlParser:true}),TaskModule, UserModule, CustomerModule, EquipmentModule, AuthModule],
   controllers: [AppController],
 })
 export class AppModule {}
