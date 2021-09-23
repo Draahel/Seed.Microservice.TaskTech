@@ -1,9 +1,11 @@
-import { Controller, Get, Post, Body, Param, Delete, Put, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, HttpException, HttpStatus, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { UpdateEquipmentDto } from 'src/equipment/dto/update-equipment.dto';
 import { CustomerService } from './customer.service';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { Customer } from './schemas/customer.schema';
 
+@UseGuards(JwtAuthGuard)
 @Controller('api/customers')
 export class CustomerController {
   constructor(private readonly customerService: CustomerService) {}
