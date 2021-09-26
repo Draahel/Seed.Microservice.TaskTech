@@ -24,10 +24,7 @@ export class AppController {
   async login(@Body() authUserDto: AuthUserDto) {
     const { email, password } = authUserDto;
     const user = await this.localStrategy.validate(email, password)
-    const token = await this.authService.login(user);
-    const verif = this.jwtStrategy.validate(user);
-    console.log(verif);
-    return token;
+    return await this.authService.login(user);
   }
   @UseGuards(JwtAuthGuard)
   @Get('profile')
