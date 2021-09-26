@@ -49,6 +49,10 @@ export class UserService {
     return await bcrypt.hash(user.password, 10);
   }
   async findByEmail(email:string):Promise<User>{
-    return await this.UserModel.findOne({ email }).exec();
+    try {
+      return await this.UserModel.findOne({ email }).exec();
+    } catch (error) {
+      return null; 
+    }
   }
 }
