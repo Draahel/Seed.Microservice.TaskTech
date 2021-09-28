@@ -8,13 +8,13 @@ export type TaskDocument = Task & Document;
 @Schema()
 export class Task {
     @Prop({required:true})
-    name:string;
+    title:string;
 
     @Prop({required:true})
     equipment:string;
     
     @Prop()
-    assignedTo:string[];
+    assignedTo:string;
 
     @Prop({required:true})
     description:string;

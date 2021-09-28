@@ -5,14 +5,15 @@ export class CreateTaskDto{
     @ApiProperty()
     @IsString()
     @IsNotEmpty({message:"La tarea debe tener un titulo."})
-    readonly name:string;
+    readonly title:string;
 
     @ApiProperty()
     @IsNotEmpty({message:"Debe asignarle un equipo a esta tarea."})
     readonly equipment:string;
 
     @ApiProperty()
-    readonly assignedTo:string[];
+    @IsString()
+    readonly assignedTo:string;
 
     @ApiProperty()
     @IsNotEmpty({message:"Debe tener una descripcion."})

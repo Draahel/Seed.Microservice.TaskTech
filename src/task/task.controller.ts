@@ -20,8 +20,9 @@ export class TaskController {
     }
 
     @Get()
-    async getTasks():Promise<Task[]>{
-        return await this.taskService.getTasks();
+    async getTasks():Promise<any>{
+        const allTasks = await this.taskService.getTasks(); 
+        return {ok: true, allTasks};
     }
 
     @Post()

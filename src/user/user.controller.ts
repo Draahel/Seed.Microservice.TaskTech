@@ -28,8 +28,12 @@ export class UserController {
   }
 
   @Get()
-  async getUsers(): Promise<User[]> {
-    return await this.userService.getUsers();
+  async getUsers(): Promise<any> {
+    const allUsers = await this.userService.getUsers(); 
+    return {
+      ok: true,
+      allUsers,
+    }
   }
 
   @Get('user/:id')
