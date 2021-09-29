@@ -23,7 +23,7 @@ export class TaskService {
     // Listar todas las tareas
     async getTasks():Promise<Task[]>{
         try {
-            return await this.taskModel.find().exec();
+            return await this.taskModel.find({exist:true}).exec();
         } catch (error) {
             return null;
         }

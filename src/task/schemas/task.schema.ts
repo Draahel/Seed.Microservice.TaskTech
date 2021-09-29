@@ -25,6 +25,9 @@ export class Task {
     @Prop({default:dayjs().utc().format()})
     createdAt:string;
 
+    @Prop({default:true})
+    exist:boolean;
+
     @Prop()
     obsrvation:string;
 
