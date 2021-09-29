@@ -31,7 +31,7 @@ export class TaskController {
     }
 
     @Put(':taskId')
-    updateTask(@Param('taskId') taskId:String, @Body() task:UpdateTaskDto):Promise<Task>{
+    updateTask(@Param('taskId') taskId:String, @Body() task):Promise<Task>{
         return this.taskService.updateTask(taskId, task);
     }
 

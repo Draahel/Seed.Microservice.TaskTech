@@ -19,7 +19,7 @@ export class Task {
     @Prop({required:true})
     description:string;
 
-    @Prop({ default:"New"})
+    @Prop({default:"new"})
     state:string;
 
     @Prop({default:dayjs().utc().format()})

@@ -30,6 +30,7 @@ export class CreateTaskDto{
 
     readonly observatio:string;
 
+    @ApiProperty()
     state:string;
 
     readonly createdAt:string;

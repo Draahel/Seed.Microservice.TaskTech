@@ -19,7 +19,7 @@ export class UserService {
   }
   async getUsers():Promise<User[]> {
     try {
-      return await this.UserModel.find().exec();
+      return await this.UserModel.find({state:true}).exec();
     } catch (error) {
       return null;
     }

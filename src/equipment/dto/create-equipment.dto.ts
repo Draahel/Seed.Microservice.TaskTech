@@ -22,8 +22,8 @@ export class CreateEquipmentDto {
     
     @ApiProperty()
     @IsNotEmpty({ message:'Debe pertenecer a un cliente.' })
-    @IsString({ message: 'Asigne un cliente.' })
-    cliente:string;
+    @IsString({ message:'Asigne un cliente.' })
+    customer:string;
     
     createdAt:string;
 

@@ -47,7 +47,7 @@ export class UserController {
 
   @Put(':id')
   async updateUser(
-    @Param('id') id: string,@Body() user: UpdateUserDto,): Promise<User> {
+    @Param('id') id: string,@Body() user): Promise<User> {
     const res = await this.userService.updateUser(id, user);
     if(res == null){
       throw new HttpException('Usuario no encontrado', HttpStatus.NOT_FOUND);

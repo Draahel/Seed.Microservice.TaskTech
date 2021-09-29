@@ -18,7 +18,7 @@ export class EquipmentService {
 
   async getEquipments(): Promise<Equipment[]> {
     try {
-      return await this.equipmentModel.find();
+      return await this.equipmentModel.find({state:true});
     } catch (error) {
       return null;
     }
@@ -32,7 +32,7 @@ export class EquipmentService {
     }
   }
 
-  async updateEquipment(id: string, equipment: UpdateEquipmentDto): Promise<Equipment> {
+  async updateEquipment(id: string, equipment): Promise<Equipment> {
     try {
       return await this.equipmentModel.findByIdAndUpdate(id, equipment,{ new: true },);
     } catch (error) {
