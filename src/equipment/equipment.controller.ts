@@ -29,7 +29,7 @@ export class EquipmentController {
   }
 
   @Put(':id')
-  async updateEquipment(@Param('id') id: string, @Body() equipment: CreateEquipmentDto): Promise<Equipment> {
+  async updateEquipment(@Param('id') id: string, @Body() equipment): Promise<Equipment> {
     const res = await this.equipmentService.updateEquipment(id, equipment);
     if(res == null){
       throw new HttpException('Producto no encontrado', HttpStatus.NOT_FOUND)

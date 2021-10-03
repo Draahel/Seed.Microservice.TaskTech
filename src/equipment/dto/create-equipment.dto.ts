@@ -4,17 +4,14 @@ import { IsInt, IsNotEmpty, IsString } from "class-validator";
 export class CreateEquipmentDto {
     @ApiProperty()
     @IsNotEmpty({ message:'Debe tener una marca.' })
-    @IsString({ message: 'La marca no es valida.' })
     marca:string;
     
     @ApiProperty()
     @IsNotEmpty({ message:'Debe tener un modelo.' })
-    @IsString({ message: 'El modelo no es valido.' })
     modelo:string;
     
     @ApiProperty()
     @IsNotEmpty({ message:'Debe tener un numero de serie.' })
-    @IsInt({ message:'El numero de serie no es valido.' })
     numSerie:number;
     
     @ApiPropertyOptional()

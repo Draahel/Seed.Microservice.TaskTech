@@ -12,7 +12,6 @@ export class CreateTaskDto{
     readonly equipment:string;
 
     @ApiProperty()
-    @IsString()
     readonly assignedTo:string;
 
     @ApiProperty()

@@ -20,4 +20,6 @@ export class UpdateUserDto{
   @Length(8, 18, { message: 'La contraseña debe tener de 8 a 18 caracteres' })
   password: string;
 
+  
+
 }

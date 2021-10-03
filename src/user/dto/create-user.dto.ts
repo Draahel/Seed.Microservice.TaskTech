@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsEmail, IsInt, IsNotEmpty, Length, Max, Min, MinLength } from 'class-validator';
-// import { IsUserAlreadyExist } from 'src/pipes/UserAlreadyExist.pipe';
+import { IsEmail, IsInt, IsNotEmpty, Length, Max, Min, MinLength} from 'class-validator';
+import { Transform } from 'class-transformer';
 
 export class CreateUserDto {
   @ApiProperty()
@@ -18,8 +18,8 @@ export class CreateUserDto {
   readonly tipoIdent: string;
 
   @ApiProperty()
-  @IsInt({ message: 'Numero de identificacion debe ser solo números.' })
-  @Min(999999, { message: 'El numero de identifcacion es muy corto.' } )
+  @Transform(val => parseInt(val.value))
+  @IsInt()
   readonly nIdent: number;
 
   @ApiPropertyOptional()
@@ -27,20 +27,18 @@ export class CreateUserDto {
 
   @ApiPropertyOptional()
   readonly img: string;
-
+  
   @ApiProperty()
   @IsEmail()
   readonly email: string;
 
   @ApiPropertyOptional()
-  @IsInt({ message: 'edad invalida' })
-  @Min(15, { message: 'La edad debe ser mayor a 15' })
-  @Max(99, { message: 'La edad debe ser mejor a 99' })
   readonly age: number;
 
   @ApiPropertyOptional()
-  @IsInt({ message: 'Ingrese un numero de contacto valido' })
   readonly cellphone: number;
+
+  admin:boolean;
 
   @ApiProperty()
   @IsNotEmpty({ message: 'Ingrese una contraseña' })
